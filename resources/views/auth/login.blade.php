@@ -1,8 +1,8 @@
 <x-layout>
     <div class="flex md:justify-between justify-center">
-        <div class="mt-6 md:mt-10 lg:mx-28 md:mx-14 space-y-6 md:flex-shrink-0 w-full mx-4 md:w-auto">
+           <x-form.container>
             <x-form.auth info="Welcome back! Please enter your details">Welcome back</x-form.auth>
-            <form action="#" class="space-y-6 ">
+            <form action="#" class="space-y-6 lg:min-w-[392px]">
                 <x-form.input name="username" placeholder="Enter uniqure username or email"/>
                 <x-form.input name="password" type="password" placeholder="Fill in password"/>
                 <div class="flex justify-between">
@@ -11,10 +11,10 @@
                 </div>
                 <x-form.button>Log In</x-form.button>
                 <div class="text-center">
-                    <p class="text-[#808189] text-sm md:text-base">Don't have and an account? <a href="#" class="text-[#010414] font-bold">Sign up for free</a></p>
+                    <p class="text-[#808189] text-sm md:text-base">Don't have and an account? <a href="{{route('auth.register')}}" class="text-[#010414] font-bold">Sign up for free</a></p>
                 </div>
             </form>
-        </div>
+           </x-form.container>
         <div class="md:min-h-screen hidden md:block">
             <img src="{{asset('./images/vaccine.png')}}" class="h-full w-full object-cover"/>
         </div>
