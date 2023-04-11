@@ -13,7 +13,6 @@
                 <div class="text-center">
                     <p class="text-[#808189] text-sm md:text-base">Don't have and an account? <a href="#" class="text-[#010414] font-bold">Sign up for free</a></p>
                 </div>
-
             </form>
         </div>
         <div class="md:min-h-screen hidden md:block">
