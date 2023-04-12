@@ -15,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/login', 'auth.login')->name('auth.login');
 Route::view('/register', 'auth.register')->name('auth.register');
-Route::view('/set-password', 'auth.set-password')->name('auth.set_password');
+Route::view('/reset-password', 'auth.reset-password')->name('auth.reset_password');
 Route::view('/new-password', 'auth.new-password')->name('auth.new_password');
+Route::view('/success-update', 'auth.success-update')->name('auth.success_update');
+Route::view('/success-confirmation', 'auth.success-confirmation')->name('auth.success_confirmation');

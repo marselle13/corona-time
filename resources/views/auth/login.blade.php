@@ -10,8 +10,7 @@
                     <a href="#" class="text-[#2029F3] text-sm font-semibold">Forget Password?</a>
                 </div>
                 <x-form.button>Log In</x-form.button>
-                <div class="text-center">
-                    <p class="text-[#808189] text-sm md:text-base">Don't have and an account? <a
+                <div class="text-center"><p class="text-[#808189] text-sm md:text-base">Don't have and an account? <a
                             href="{{route('auth.register')}}" class="text-[#010414] font-bold">Sign up for free</a></p>
                 </div>
             </form>
