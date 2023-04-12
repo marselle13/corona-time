@@ -9,6 +9,9 @@
 
 html,body{
     font-family: 'inter',sans-serif;
+    height: 100%;
 }
 
+@media (max-width: 768px) {
+}
 
