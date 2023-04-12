@@ -1,17 +1,17 @@
 <x-layout>
     <div class="flex md:justify-between justify-center">
         <x-form.container class="lg:mx-28">
-            <x-form.auth info="Welcome back! Please enter your details">Welcome back</x-form.auth>
+            <x-form.auth info="{{trans('messages.info_login')}}">{{trans('messages.welcome_login')}}</x-form.auth>
             <form action="#" class="lg:max-w-[392px] md:space-y-6 space-y-4">
-                <x-form.input name="username" placeholder="Enter uniqure username or email"/>
-                <x-form.input name="password" type="password" placeholder="Fill in password"/>
+                <x-form.input name="{{trans('messages.username')}}" placeholder="{{trans('messages.login_placeholder')}}"/>
+                <x-form.input name="{{trans('messages.password')}}" type="password" placeholder="{{trans('messages.password_placeholder')}}"/>
                 <div class="flex justify-between gap-2">
                     <x-form.checkbox/>
-                    <a href="{{route('auth.reset_password')}}" class="text-[#2029F3] text-sm font-semibold">Forget Password?</a>
+                    <a href="{{route('auth.reset_password')}}" class="text-[#2029F3] text-sm font-semibold">{{trans('messages.forget_password')}}</a>
                 </div>
-                <x-form.button>Log In</x-form.button>
-                <div class="text-center"><p class="text-[#808189] text-sm md:text-base">Don't have and an account? <a
-                            href="{{route('auth.register')}}" class="text-[#010414] font-bold">Sign up for free</a></p>
+                <x-form.button>{{trans('messages.log_in')}}</x-form.button>
+                <div class="text-center"><p class="text-[#808189] text-sm md:text-base">{{trans('messages.no_account')}} <a
+                            href="{{route('auth.register')}}" class="text-[#010414] font-bold">{{trans('messages.sign_free')}}</a></p>
                 </div>
             </form>
         </x-form.container>
