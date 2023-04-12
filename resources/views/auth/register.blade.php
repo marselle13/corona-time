@@ -1,18 +1,21 @@
 <x-layout>
     <div class="flex md:justify-between justify-center">
-        <x-form.container class="lg:max-w-[392px]">
-            <x-form.auth info="Please enter required info to sign up">Welcome to Coronatime</x-form.auth>
-            <form class="md:space-y-6 space-y-4">
-                <x-form.input name="username" placeholder="Enter unique username"/>
-                <x-form.input name="email" type="email" placeholder="Enter your email"/>
-                <x-form.input name="password" type="password" placeholder="Fill in password"/>
-                <x-form.input name="repeat-password" type="password" label="Repeat password"
-                              placeholder="Repeat password"/>
+        <x-form.container>
+            <x-form.auth info="{{trans('messages.info_register')}}">{{trans('messages.welcome_register')}}</x-form.auth>
+            <form class="lg:w-[392px] md:space-y-6 space-y-4">
+                <div class="space-y-2">
+                    <x-form.input name="{{trans('messages.username')}}" placeholder="{{trans('messages.username_placeholder')}}"/>
+                    <p class="text-xs text-[#808189]">{{trans('messages.username_rule')}}</p>
+                </div>
+                <x-form.input name="{{trans('messages.email')}}" type="email" placeholder="{{trans('messages.email_placeholder')}}"/>
+                <x-form.input name="{{trans('messages.password')}}" type="password" placeholder="{{trans('messages.password_placeholder')}}"/>
+                <x-form.input name="repeat-password" type="password" label="{{trans('messages.repeat_password')}}"
+                              placeholder="{{trans('messages.repeat_password')}}"/>
                 <x-form.checkbox/>
-                <x-form.button>Sign Up</x-form.button>
+                <x-form.button>{{trans('messages.sign_up')}}</x-form.button>
                 <div class="text-center">
-                    <p class="text-[#808189] text-sm md:text-base">Already have an account? <a
-                            href="{{route('auth.login')}}" class="text-[#010414] font-bold">Log in</a></p>
+                    <p class="text-[#808189] text-sm md:text-base">{{trans('messages.have_account')}} <a
+                            href="{{route('auth.login')}}" class="text-[#010414] font-bold">{{trans('messages.log_in')}}</a></p>
                 </div>
             </form>
         </x-form.container>

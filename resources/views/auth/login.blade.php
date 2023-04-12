@@ -1,13 +1,13 @@
 <x-layout>
     <div class="flex md:justify-between justify-center">
-        <x-form.container class="lg:max-w-[392px] lg:mx-28 ">
+        <x-form.container class="lg:mx-28">
             <x-form.auth info="Welcome back! Please enter your details">Welcome back</x-form.auth>
-            <form action="#" class="md:space-y-6 space-y-4">
+            <form action="#" class="lg:max-w-[392px] md:space-y-6 space-y-4">
                 <x-form.input name="username" placeholder="Enter uniqure username or email"/>
                 <x-form.input name="password" type="password" placeholder="Fill in password"/>
                 <div class="flex justify-between gap-2">
                     <x-form.checkbox/>
-                    <a href="{{route('auth.recover_password')}}" class="text-[#2029F3] text-sm font-semibold">Forget Password?</a>
+                    <a href="{{route('auth.reset_password')}}" class="text-[#2029F3] text-sm font-semibold">Forget Password?</a>
                 </div>
                 <x-form.button>Log In</x-form.button>
                 <div class="text-center"><p class="text-[#808189] text-sm md:text-base">Don't have and an account? <a
