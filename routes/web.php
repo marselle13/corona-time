@@ -19,3 +19,5 @@ Route::view('/reset-password', 'auth.reset-password')->name('auth.reset_password
 Route::view('/new-password', 'auth.new-password')->name('auth.new_password');
 Route::view('/success-update', 'auth.success-update')->name('auth.success_update');
 Route::view('/success-confirmation', 'auth.success-confirmation')->name('auth.success_confirmation');
+Route::view('/confirmation-email', 'auth.confirmation-email')->name('auth.confirmation_email');
+Route::view('/recover-password', 'auth.recover-password')->name('auth.recover_password');

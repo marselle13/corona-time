@@ -7,7 +7,7 @@
                 <x-form.input name="password" type="password" placeholder="Fill in password"/>
                 <div class="flex justify-between gap-2">
                     <x-form.checkbox/>
-                    <a href="#" class="text-[#2029F3] text-sm font-semibold">Forget Password?</a>
+                    <a href="{{route('auth.recover_password')}}" class="text-[#2029F3] text-sm font-semibold">Forget Password?</a>
                 </div>
                 <x-form.button>Log In</x-form.button>
                 <div class="text-center"><p class="text-[#808189] text-sm md:text-base">Don't have and an account? <a
