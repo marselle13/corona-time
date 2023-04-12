@@ -1,1 +1,1 @@
-<x-success>Your password has been updated successfully</x-success>
+<x-success button="Sign In">Your password has been updated successfully</x-success>
