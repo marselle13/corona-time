@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::post('/language', [LanguageController::class, 'setLanguage'])->name('language.set');
 
 Route::view('/login', 'auth.login')->name('auth.login');
 Route::view('/login/recover-password', 'auth.recover-password')->name('auth.recover_password');
