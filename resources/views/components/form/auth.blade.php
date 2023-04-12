@@ -4,14 +4,7 @@
         <div>
             <img src="{{asset('./images/coronatime.png')}}" alt="coronatime"/>
         </div>
-        <form id="language-form" method="POST" action="{{ route('language.set')}}" class="flex items-end">
-            @csrf
-            <label for='language' class="hidden">language</label>
-            <select id='language' name='locale' class="border-none focus:ring-0" onchange="this.form.submit()">
-                <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>EN</option>
-                <option value="ka" {{ app()->getLocale() == 'ka' ? 'selected' : '' }}>KA</option>
-            </select>
-        </form>
+        <x-lang-dropdown/>
     </div>
     <div class="space-y-2 md:space-y-4">
         <h1 class="font-black  text-xl md:text-2xl text-[#010414] ">{{$slot}}</h1>

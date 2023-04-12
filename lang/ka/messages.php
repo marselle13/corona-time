@@ -24,4 +24,14 @@ return[
 	'remember_device'        => 'დამახსოვრება',
 	'sign_up'                => 'რეგისტრაცია',
 	'log_in'                 => 'შესვლა',
+	'new_password'           => 'ახალი პაროლი',
+	'new_placeholder'        => 'შეიყვანეთ ახალი პაროლი',
+	#reset page
+	'reset_password'         => 'პაროლის აღდგენა',
+	#new password page
+	'save_changes'           => 'ცვლილების შენახვა',
+	#succesful message page
+	'success_update'         => 'პაროლი წარმატებით განახლდა',
+	'success_registration'   => 'ელ-ფოსტის დასადასტურებელი ლინკი გამოგზავნილია',
+	'success_confirmation'   => 'თქვენი ემაილი დადასტურებულია',
 ];

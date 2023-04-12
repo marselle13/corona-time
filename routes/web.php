@@ -17,8 +17,8 @@ use App\Http\Controllers\LanguageController;
 Route::post('/language', [LanguageController::class, 'setLanguage'])->name('language.set');
 
 Route::view('/login', 'auth.login')->name('auth.login');
-Route::view('/login/recover-password', 'auth.recover-password')->name('auth.recover_password');
 Route::view('/login/reset-password', 'auth.reset-password')->name('auth.reset_password');
+Route::view('/login/recover-password', 'auth.recover-password')->name('auth.recover_password');
 Route::view('/login/new-password', 'auth.new-password')->name('auth.new_password');
 Route::view('/login/success-update', 'auth.success-update')->name('auth.success_update');
 Route::view('/register', 'auth.register')->name('auth.register');

@@ -1,1 +1,1 @@
-<x-success button="Sign In">Your password has been updated successfully</x-success>
+<x-success button="{{trans('messages.log_in')}}">{{trans('messages.success_update')}}</x-success>

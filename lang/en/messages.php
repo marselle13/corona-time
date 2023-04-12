@@ -18,10 +18,20 @@ return [
 	'email'                  => 'Email',
 	'password'               => 'Password',
 	'repeat_password'        => 'Repeat Password',
-	'username_placeholder'   => 'Enter your email',
-	'email_placeholder'      => 'Fill in password',
-	'password_placeholder'   => 'შეიყვანეთ პაროლი',
+	'username_placeholder'   => 'Enter your username',
+	'email_placeholder'      => 'Fill in email',
+	'password_placeholder'   => 'Fill in password',
 	'remember_device'        => 'Remember this device',
 	'sign_up'                => 'Sign Up',
 	'log_in'                 => 'Log In',
+	'new_password'           => 'New Password',
+	'new_placeholder'        => 'Enter new password',
+	#reset page
+	'reset_password'         => 'Reset Password',
+	#new password page
+	'save_changes'           => 'Save Changes',
+	#succesful message page
+	'success_update'         => 'Your password has been updated successfully',
+	'success_registration'   => 'We have sent you a confirmation email',
+	'success_confirmation'   => 'Your account is confirmed, you can sign in',
 ];

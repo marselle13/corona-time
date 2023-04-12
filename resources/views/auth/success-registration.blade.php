@@ -1,1 +1,1 @@
-<x-success button="">We have sent you a confirmation email</x-success>
+<x-success button="">{{trans('messages.success_registration')}}</x-success>

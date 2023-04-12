@@ -2,7 +2,7 @@
     <div class="flex md:justify-between justify-center">
         <x-form.container class="lg:mx-28">
             <x-form.auth info="{{trans('messages.info_login')}}">{{trans('messages.welcome_login')}}</x-form.auth>
-            <form action="#" class="lg:max-w-[392px] md:space-y-6 space-y-4">
+            <form action="#" class="lg:w-[392px] md:space-y-6 space-y-4">
                 <x-form.input name="{{trans('messages.username')}}" placeholder="{{trans('messages.login_placeholder')}}"/>
                 <x-form.input name="{{trans('messages.password')}}" type="password" placeholder="{{trans('messages.password_placeholder')}}"/>
                 <div class="flex justify-between gap-2">
