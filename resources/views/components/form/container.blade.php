@@ -1,3 +1,3 @@
-<div class="mt-6 md:mt-10 lg:mx-28 md:mx-14 space-y-6 md:flex-shrink-0 w-full mx-4 md:w-auto">
+<div  {{$attributes->class(["mt-6 md:mt-10 lg:mx-28  space-y-6 md:mx-10 mx-4 w-full md:w-auto"])}}>
 {{$slot}}
 </div>
