@@ -34,4 +34,10 @@ return [
 	'success_update'         => 'Your password has been updated successfully',
 	'success_registration'   => 'We have sent you a confirmation email',
 	'success_confirmation'   => 'Your account is confirmed, you can sign in',
+	#email page
+	'recover'                => 'Recover Password',
+	'recover_info'           => 'click this button to recover a password',
+	'confirmation'           => 'Confirmation Email',
+	'confirmation_info'      => 'click this button to verify your email',
+	'verify'                 => 'Verify Email',
 ];
