@@ -15,7 +15,7 @@
                 <x-form.button>{{trans('messages.sign_up')}}</x-form.button>
                 <div class="text-center">
                     <p class="text-[#808189] text-sm md:text-base">{{trans('messages.have_account')}} <a
-                            href="{{route('auth.login')}}" class="text-[#010414] font-bold">{{trans('messages.log_in')}}</a></p>
+                            href="{{route('auth.login_page')}}" class="text-[#010414] font-bold">{{trans('messages.log_in')}}</a></p>
                 </div>
             </form>
         </x-form.container>
