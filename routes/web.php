@@ -22,11 +22,8 @@ Route::view('/login/reset-password', 'auth.reset-password')->name('auth.reset_pa
 Route::view('/login/recover-password', 'auth.recover-password')->name('auth.recover_password');
 Route::view('/login/new-password', 'auth.new-password')->name('auth.new_password');
 Route::view('/login/success-update', 'auth.success-update')->name('auth.success_update');
-Route::view('register/success-registration', 'auth.success-registration')->name('auth.success_registration');
-Route::view('register/confirmation-email', 'auth.confirmation-email')->name('auth.confirmation_email');
-Route::view('/register/success-confirmation', 'auth.success-confirmation')->name('auth.success_confirmation');
 
-Route::view('/register', 'auth.register-page')->name('auth.register_page');
-Route::controller(AuthController::class)->group(function () {
-	Route::post('/register', 'register')->name('auth.register');
-});
+Route::view('register', 'auth.register-page')->name('auth.register_page');
+Route::post('register', [AuthController::class, 'register'])->name('auth.register');
+Route::view('register/success-registration/', 'auth.success-registration')->middleware('auth')->name('auth.success_registration');
+Route::get('register/confirmation-email/{id}/{hash}', [AuthController::class, 'confirmation'])->middleware(['auth', 'signed'])->name('verification.verify');
