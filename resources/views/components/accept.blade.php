@@ -7,7 +7,7 @@
         justify-content: center;
         height: 100%;
         width: 100%;
-        padding: 1rem;
+        margin: 16px 16px;
     }
 
     .text-div {
@@ -35,14 +35,17 @@
         margin-top: 2.5rem;
         background-color: #0FBA68;
         border-radius: 12px;
-        padding: 1rem;
     }
 
-    .button a {
+    .button-text{
+        text-align: center;
         text-decoration: none;
         font-weight: 900;
         color: white;
         text-transform: uppercase;
+        display: inline-block;
+        width: 100%;
+        padding: 20px 0;
     }
 </style>
 <x-layout>
@@ -55,7 +58,7 @@
             <p>{{$info}}</p>
         </div>
         <div class="button">
-            <a href="{{$verify}}">{{$button}}</a>
+            <a class="button-text"  href="{{$verify}}"><span>{{$button}}</span></a>
         </div>
     </div>
 </x-layout>

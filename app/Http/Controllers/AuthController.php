@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\auth\RegisterAuthRequest;
+use App\Http\Requests\auth\RegisterRequest;
 use App\Models\User;
 use App\Notifications\VerifyEmailNotification;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-	public function register(RegisterAuthRequest $request, VerifyEmailNotification $verify): RedirectResponse
+	public function register(RegisterRequest $request, VerifyEmailNotification $verify): RedirectResponse
 	{
 		$user = User::create($request->except('password_confirmation', 'remember'));
 		auth()->login($user);
