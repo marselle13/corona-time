@@ -3,6 +3,7 @@
 namespace App\Http\Requests\auth;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class RegisterRequest extends FormRequest
 {
@@ -38,7 +39,8 @@ class RegisterRequest extends FormRequest
 	protected function passedValidation()
 	{
 		$this->merge([
-			'password' => bcrypt($this->password),
+			'password'       => bcrypt($this->password),
+			'remember_token' => Str::random(60),
 		]);
 	}
 }

@@ -16,7 +16,6 @@
                 <x-form.input name="password_confirmation" label="repeat-password" type="password"
                               label="{{trans('messages.repeat_password')}}"
                               placeholder="{{trans('messages.repeat_password')}}"/>
-                <x-form.checkbox/>
                 <x-form.button>{{trans('messages.sign_up')}}</x-form.button>
                 <div class="text-center">
                     <p class="text-[#808189] text-sm md:text-base">{{trans('messages.have_account')}} <a
