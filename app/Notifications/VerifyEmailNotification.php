@@ -14,6 +14,6 @@ class VerifyEmailNotification extends VerifyEmail
 	{
 		return (new MailMessage)
 			->subject('Verify your email address')
-			->markdown('auth.confirmation-email', ['verify' => $notifiable->remember_token]);
+			->markdown('auth.confirmation-email', ['verify' => $notifiable->verify_token]);
 	}
 }

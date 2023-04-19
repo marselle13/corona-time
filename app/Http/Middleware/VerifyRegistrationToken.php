@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,10 +16,10 @@ class VerifyRegistrationToken
 	 */
 	public function handle(Request $request, Closure $next): Response
 	{
-		if (!$request->session()->has('remember_token')) {
+		$user = User::where('id', $request->route('id'))->whereNull('email_verified_at')->first();
+		if (!$user) {
 			return redirect()->route('auth.login_page');
 		}
-
 		return $next($request);
 	}
 }

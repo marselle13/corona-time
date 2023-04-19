@@ -26,5 +26,5 @@ Route::view('/', 'landing')->middleware(['auth', 'verified']);
 
 Route::view('register', 'auth.register-page')->name('auth.register_page')->middleware('guest');
 Route::post('register', [AuthController::class, 'register'])->name('auth.register');
-Route::view('register/success-registration/', 'auth.success-registration')->middleware('verify')->name('auth.success_registration');
-Route::get('register/confirmation-email/{token}', [AuthController::class, 'confirmation'])->middleware('verify')->name('auth.success_confirmation');
+Route::view('register/success-registration/{id}', 'auth.success-registration')->middleware('verify')->name('auth.success_registration');
+Route::get('register/confirmation-email/{token}', [AuthController::class, 'confirmation'])->name('auth.success_confirmation');
