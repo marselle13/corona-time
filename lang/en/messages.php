@@ -40,4 +40,6 @@ return [
 	'confirmation'           => 'Confirmation Email',
 	'confirmation_info'      => 'click this button to verify your email',
 	'verify'                 => 'Verify Email',
+	#subject
+	'subject'                => 'Verify your email address',
 ];

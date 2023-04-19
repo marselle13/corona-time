@@ -13,7 +13,7 @@ class VerifyEmailNotification extends VerifyEmail
 	public function toMail($notifiable): MailMessage
 	{
 		return (new MailMessage)
-			->subject('Verify your email address')
+			->subject(trans('messages.subject'))
 			->markdown('auth.confirmation-email', ['verify' => $notifiable->verify_token]);
 	}
 }
