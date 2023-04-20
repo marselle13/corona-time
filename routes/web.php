@@ -17,18 +17,24 @@ use App\Http\Controllers\AuthController;
 
 Route::post('/language', [LanguageController::class, 'setLanguage'])->name('language.set');
 
-Route::view('/login', 'auth.login-page')->name('auth.login_page');
-Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-Route::view('/login/reset-password', 'auth.reset-password')->name('auth.reset_page');
-Route::post('/login/reset-password', [AuthController::class, 'reset'])->name('auth.reset_password');
-Route::view('/login/success-recover/{id}', 'auth.success-recover')->middleware('verify.change')->name('auth.success_recover');
-Route::get('/login/new-password/{token}', [AuthController::class, 'newPassword'])->name('auth.new_password');
-Route::patch('/login/new-password/{token}', [AuthController::class, 'updatePassword'])->name('auth.update_password');
-Route::view('/login/success-update', 'auth.success-update')->name('auth.success_update');
-
 Route::view('/', 'landing')->middleware(['auth', 'verified'])->name('landing.worldwide');
 
-Route::view('register', 'auth.register-page')->name('auth.register_page');
-Route::post('register', [AuthController::class, 'register'])->name('auth.register');
-Route::view('register/success-registration/{id}', 'auth.success-registration')->middleware('verify.registration')->name('auth.success_registration');
-Route::get('register/confirmation-email/{token}', [AuthController::class, 'confirmation'])->name('auth.success_confirmation');
+Route::middleware('guest')->group(function () {
+	Route::view('/login', 'auth.login-page')->name('auth.login_page');
+	Route::view('/login/reset-password', 'auth.reset-password')->name('auth.reset_page');
+	Route::view('/login/success-recover/{id}', 'auth.success-recover')->middleware('verify.change')->name('auth.success_recover');
+	Route::view('/login/success-update', 'auth.success-update')->name('auth.success_update');
+	Route::view('register', 'auth.register-page')->name('auth.register_page');
+	Route::view('register/success-registration/{id}', 'auth.success-registration')->middleware('verify.registration')->name('auth.success_registration');
+});
+
+Route::controller(AuthController::class)->middleware('guest')->group(function () {
+	Route::post('/login', 'login')->name('auth.login');
+	Route::post('/logout', 'logout')->withoutMiddleware('guest')->middleware('auth')->name('auth.logout');
+	Route::post('/login/reset-password', 'reset')->name('auth.reset_password');
+	Route::get('/login/new-password/{token}', 'newPassword')->name('auth.new_password');
+	Route::patch('/login/new-password/{token}', 'updatePassword')->name('auth.update_password');
+
+	Route::post('register', 'register')->name('auth.register');
+	Route::get('register/confirmation-email/{token}', 'confirmation')->name('auth.success_confirmation');
+});
