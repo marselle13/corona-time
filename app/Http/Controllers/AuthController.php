@@ -41,7 +41,9 @@ class AuthController extends Controller
 		->orWhere('email', $request->username_email)->first();
 		$credentials['email'] = $user?->email;
 		$credentials['password'] = $request->password;
-		if (!auth()->attempt($credentials, $request->remember)) {
+		if (!$user->email_verified_at) {
+			return redirect(route('auth.success_registration', $user->id));
+		} elseif (!auth()->attempt($credentials, $request->remember)) {
 			return back()->withErrors(['login_error' => trans('messages.login_error')]);
 		}
 		return redirect(route('landing.worldwide'));
