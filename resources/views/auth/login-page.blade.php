@@ -2,7 +2,7 @@
     <div class="flex md:justify-between justify-center">
         <x-form.container>
             <x-form.auth info="{{trans('messages.info_login')}}">{{trans('messages.welcome_login')}}</x-form.auth>
-            <form method="POST" action="{{route('auth.login')}}" class="lg:w-[392px] md:space-y-6 space-y-4  ">
+            <form method="POST" action="{{route('auth.login')}}" class="md:w-[392px] md:space-y-6 space-y-4  ">
                 @csrf
                 <x-form.input name="username_email" label="{{trans('messages.username')}}" placeholder="{{trans('messages.login_placeholder')}}" value="{{old('username_email')}}"/>
                 <x-form.input name="password" label="{{trans('messages.password')}}" type="password" placeholder="{{trans('messages.password_placeholder')}}"/>
