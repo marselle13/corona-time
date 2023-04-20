@@ -19,8 +19,10 @@ Route::post('/language', [LanguageController::class, 'setLanguage'])->name('lang
 
 Route::view('/login', 'auth.login-page')->name('auth.login_page');
 Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::view('/login/reset-password', 'auth.reset-password')->name('auth.reset_page');
+Route::post('/login/reset-password', [AuthController::class, 'reset'])->name('auth.reset_password');
+Route::view('/login/success-recover', 'auth.success-recover')->name('auth.success_recover');
 
-Route::view('/login/reset-password', 'auth.reset-password')->name('auth.reset_password');
 Route::view('/login/recover-password', 'auth.recover-password')->name('auth.recover_password');
 Route::view('/login/new-password', 'auth.new-password')->name('auth.new_password');
 Route::view('/login/success-update', 'auth.success-update')->name('auth.success_update');

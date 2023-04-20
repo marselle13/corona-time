@@ -28,12 +28,14 @@ return[
 	'new_placeholder'        => 'შეიყვანეთ ახალი პაროლი',
 	#reset page
 	'reset_password'         => 'პაროლის აღდგენა',
+	'no_verify'              => 'ელ-ფოსტა არ არის დადასტურებული',
 	#new password page
 	'save_changes'           => 'ცვლილების შენახვა',
 	#succesful message page
 	'success_update'         => 'პაროლი წარმატებით განახლდა',
 	'success_registration'   => 'ელ-ფოსტის დასადასტურებელი ლინკი გამოგზავნილია',
 	'success_confirmation'   => 'თქვენი ემაილი დადასტურებულია',
+	'success_recover'        => 'პაროლის აღდგენის ლინკი გამოგზავნილია',
 	#email page
 	'recover'                => 'პაროლის აღდგენა',
 	'recover_info'           => 'დააჭირეთ ამ ღილაკს პაროლის აღსადგენად',

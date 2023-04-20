@@ -40,7 +40,7 @@ class RegisterRequest extends FormRequest
 	{
 		$this->merge([
 			'password'       => bcrypt($this->password),
-			'verify_token'   => Str::random(60),
+			'user_token'     => Str::random(60),
 		]);
 	}
 }

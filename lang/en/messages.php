@@ -28,12 +28,14 @@ return [
 	'new_placeholder'        => 'Enter new password',
 	#reset page
 	'reset_password'         => 'Reset Password',
+	'no_verify'              => 'Your email address has not been verified.',
 	#new password page
 	'save_changes'           => 'Save Changes',
 	#succesful message page
 	'success_update'         => 'Your password has been updated successfully',
 	'success_registration'   => 'We have sent you a confirmation email',
 	'success_confirmation'   => 'Your account is confirmed, you can sign in',
+	'success_recover'        => 'We have sent you a Recover password',
 	#email page
 	'recover'                => 'Recover Password',
 	'recover_info'           => 'click this button to recover a password',

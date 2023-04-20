@@ -14,7 +14,7 @@
                 @endif
                 <div class="flex justify-between gap-2">
                     <x-form.checkbox/>
-                    <a href="{{route('auth.reset_password')}}" class="text-[#2029F3] text-sm font-semibold">{{trans('messages.forget_password')}}</a>
+                    <a href="{{route('auth.reset_page')}}" class="text-[#2029F3] text-sm font-semibold">{{trans('messages.forget_password')}}</a>
                 </div>
                 <x-form.button>{{trans('messages.log_in')}}</x-form.button>
                 <div class="text-center"><p class="text-[#808189] text-sm md:text-base">{{trans('messages.no_account')}} <a
