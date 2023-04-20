@@ -9,8 +9,8 @@
                 <p class="text-base">{{$slot}}</p>
             </div>
             @if($button)
-            <div class="w-full md:pt-[94px] pt-0 pb-10">
-                <x-form.button>{{$button}}</x-form.button>
+            <div class="md:mt-[94px] bg-[#0FBA68] rounded-xl text-center flex justify-center mb-10">
+                <a href="{{route('auth.login_page')}}" class="text-white font-black rounded-xl w-full py-4 uppercase">{{$button}}</a>
             </div>
             @endif
         </div>
