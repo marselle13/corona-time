@@ -71,4 +71,10 @@ class AuthController extends Controller
 		$request->session()->forget('user_token');
 		return view('auth.success-update');
 	}
+
+	public function logout()
+	{
+		auth()->logout();
+		return redirect()->route('auth.login_page');
+	}
 }
