@@ -13,7 +13,7 @@ class ResetPasswordNotification extends ResetPassword
 	public function toMail($notifiable): MailMessage
 	{
 		return (new MailMessage)
-			->subject('recover password')
+			->subject(trans('messages.recover'))
 			->markdown('auth.confirmation-recover', ['reset' => $notifiable->user_token]);
 	}
 }
