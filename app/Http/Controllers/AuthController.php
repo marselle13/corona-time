@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\auth\LoginRequest;
 use App\Http\Requests\auth\RegisterRequest;
 use App\Models\User;
 use App\Notifications\VerifyEmailNotification;
@@ -28,5 +29,17 @@ class AuthController extends Controller
 		$user->save();
 		$request->session()->forget('verify_token');
 		return view('auth.success-confirmation');
+	}
+
+	public function login(LoginRequest $request): RedirectResponse
+	{
+		$user = User::where('username', $request->username_email)
+		->orWhere('email', $request->username_email)->first();
+		$credentials['email'] = $user?->email;
+		$credentials['password'] = $request->password;
+		if (!auth()->attempt($credentials, $request->remember)) {
+			return back()->withErrors(['login_error' => trans('messages.login_error')]);
+		}
+		return redirect()->route('landing.worldwide');
 	}
 }

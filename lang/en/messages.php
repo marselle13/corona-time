@@ -42,4 +42,6 @@ return [
 	'verify'                 => 'Verify Email',
 	#subject
 	'subject'                => 'Verify your email address',
+	#login
+	'login_error'            => 'Your provided credentials is not correct',
 ];
