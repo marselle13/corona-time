@@ -6,7 +6,7 @@ use App\Rules\VerifiedEmail;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ResetRequest extends FormRequest
+class ResetPasswordRequest extends FormRequest
 {
 	/**
 	 * Get the validation rules that apply to the request.
