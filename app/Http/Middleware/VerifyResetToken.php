@@ -16,7 +16,7 @@ class VerifyResetToken
 	 */
 	public function handle(Request $request, Closure $next): Response
 	{
-		$user = User::where('user_token', $request->session()->get('user_token'))->where('id', $request->route('id'))->first();
+		$user = User::where('user_token', $request->session()->get('user_token'))->first();
 		if (!$user || !$user->user_token) {
 			return redirect()->route('auth.login_page');
 		}

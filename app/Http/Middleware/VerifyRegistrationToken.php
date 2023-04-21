@@ -16,7 +16,7 @@ class VerifyRegistrationToken
 	 */
 	public function handle(Request $request, Closure $next): Response
 	{
-		$user = User::where('user_token', $request->session()->get('user_token'))->where('id', $request->route('id'))->whereNull('email_verified_at')->first();
+		$user = User::where('user_token', $request->session()->get('user_token'))->whereNull('email_verified_at')->first();
 		if (!$user) {
 			return redirect()->route('auth.login_page');
 		}
