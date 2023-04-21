@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\auth\ResetPasswordRequest;
 use App\Http\Requests\auth\UpdatePasswordRequest;
+use App\Mail\ResetPasswordEmail;
 use App\Models\User;
-use App\Notifications\ResetPasswordNotification;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class ResetPasswordController extends Controller
@@ -16,25 +15,14 @@ class ResetPasswordController extends Controller
 	public function reset(ResetPasswordRequest $request): RedirectResponse
 	{
 		$user = User::where('email', $request->validated())->first();
-		$user->user_token = Str::random(60);
-		$user->save();
-		$request->session()->put('user_token', $user->user_token);
-		Notification::send($user, new ResetPasswordNotification($user->user_token));
-		return redirect(route('auth.success_recover', $user->id));
+		Mail::to($user->email)->send(new ResetPasswordEmail($user));
+		return redirect(route('auth.success_recover'));
 	}
 
-	public function newPassword(string $token): View
+	public function updatePassword(UpdatePasswordRequest $request, User $userId): View
 	{
-		return view('auth.new-password', ['token' => $token]);
-	}
-
-	public function updatePassword(UpdatePasswordRequest $request, string $token): View
-	{
-		$user = User::where('user_token', $token)->firstOrFail();
-		$user->update($request->except('password_confirmation'));
-		$user->user_token = null;
-		$user->save();
-		$request->session()->forget('user_token');
+		$userId->update($request->except('password_confirmation'));
+		$userId->tokens()->delete();
 		return view('auth.success-update');
 	}
 }
