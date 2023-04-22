@@ -7,11 +7,11 @@ use Illuminate\View\View;
 
 class VerifyEmailController extends Controller
 {
-	public function confirmation(User $userId): View
+	public function confirmation(User $user): View
 	{
-		$userId->markEmailAsVerified();
-		$userId->user_token = null;
-		$userId->save();
+		$user->markEmailAsVerified();
+		$user->user_token = null;
+		$user->save();
 		return view('success.confirmation');
 	}
 }

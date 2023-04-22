@@ -1,5 +1,5 @@
 <x-form.password>
-    <form method="POST" action="{{route('passwords.update',[$userId,$token])}}" class="md:min-w-[392px] pt-10 md:pt-8 flex flex-col md:block h-3/4 justify-between">
+    <form method="POST" action="{{route('passwords.update',[$user,$token])}}" class="md:min-w-[392px] pt-10 md:pt-8 flex flex-col md:block h-3/4 justify-between">
         @csrf
         @method('PATCH')
         <div class="space-y-4 md:space-y-6">

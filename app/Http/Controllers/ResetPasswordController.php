@@ -19,11 +19,11 @@ class ResetPasswordController extends Controller
 		return redirect(route('successes.password_recover'));
 	}
 
-	public function updatePassword(UpdatePasswordRequest $request, User $userId): View
+	public function updatePassword(UpdatePasswordRequest $request, User $user): View
 	{
-		$userId->update($request->except('password_confirmation'));
-		$userId->user_token = null;
-		$userId->save();
+		$user->update($request->except('password_confirmation'));
+		$user->user_token = null;
+		$user->save();
 		return view('success.password-update');
 	}
 }

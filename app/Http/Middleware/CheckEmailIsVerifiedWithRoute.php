@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckEmailIsVerified extends EnsureEmailIsVerified
+class CheckEmailIsVerifiedWithRoute extends EnsureEmailIsVerified
 {
 	/**
 	 * Handle an incoming request.
@@ -18,13 +18,10 @@ class CheckEmailIsVerified extends EnsureEmailIsVerified
 	 */
 	public function handle($request, Closure $next, $redirectToRoute = null): Response
 	{
-		$userId = $request->route('userId');
+		$userId = $request->route('user');
 		$user = $userId ? User::find($userId) : $request->user();
-
 		if ($user instanceof MustVerifyEmail && !$user->hasVerifiedEmail()) {
-			return $request->expectsJson()
-				? abort(403, 'Your email address is not verified.')
-				: redirect()->route($redirectToRoute ?: 'auth.login_page');
+			return redirect()->route($redirectToRoute ?: 'auth.login_page');
 		}
 
 		return $next($request);
