@@ -42,5 +42,5 @@ Route::controller(ResetPasswordController::class)->middleware(['guest', 'checkVe
 });
 
 Route::controller(VerifyEmailController::class)->middleware(['guest', 'verify'])->group(function () {
-	Route::get('/register/confirmation-email/{userId}/{token}', 'confirmation')->name('emails.confirmation');
+	Route::get('/confirmation-email/{userId}/{token}', 'confirmation')->name('emails.confirmation');
 });
