@@ -22,7 +22,8 @@ class ResetPasswordController extends Controller
 	public function updatePassword(UpdatePasswordRequest $request, User $userId): View
 	{
 		$userId->update($request->except('password_confirmation'));
-		$userId->tokens()->delete();
+		$userId->user_token = null;
+		$userId->save();
 		return view('auth.success-update');
 	}
 }
