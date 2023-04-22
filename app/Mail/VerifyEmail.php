@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Str;
 
-class ResetPasswordEmail extends Mailable
+class VerifyEmail extends Mailable
 {
 	use Queueable, SerializesModels;
 
@@ -21,16 +21,17 @@ class ResetPasswordEmail extends Mailable
 
 	public function build()
 	{
-		$this->generateResetToken($this->user);
-		return $this->subject(trans('messages.recover'))
-			->view('auth.confirmation-recover')
+		$this->generateVerifyToken($this->user);
+
+		return $this->subject(trans('messages.verify'))
+			->view('auth.confirmation-email')
 			->with([
-				'reset' => $this->user->user_token,
-				'user'  => $this->user,
+				'verify' => $this->user->user_token,
+				'user'   => $this->user,
 			]);
 	}
 
-	private function generateResetToken(User $user)
+	private function generateVerifyToken(User $user): void
 	{
 		$user->user_token = Str::random(40);
 		$user->save();

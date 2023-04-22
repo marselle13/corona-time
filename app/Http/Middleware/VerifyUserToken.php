@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class VerifyRegistrationToken
+class VerifyUserToken
 {
 	/**
 	 * Handle an incoming request.
@@ -16,8 +16,8 @@ class VerifyRegistrationToken
 	 */
 	public function handle(Request $request, Closure $next): Response
 	{
-		$user = User::where('user_token', $request->session()->get('user_token'))->whereNull('email_verified_at')->first();
-		if (!$user) {
+		$user = User::where('user_token', $request->route('token'))->first();
+		if (!$user || !$user->user_token) {
 			return redirect()->route('auth.login_page');
 		}
 		return $next($request);

@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\auth\LoginRequest;
 use App\Http\Requests\auth\RegisterRequest;
+use App\Mail\VerifyEmail;
 use App\Models\User;
-use App\Notifications\VerifyEmailNotification;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
-	public function register(RegisterRequest $request, VerifyEmailNotification $verify): RedirectResponse
+	public function register(RegisterRequest $request): RedirectResponse
 	{
 		$user = User::create($request->except('password_confirmation'));
-		$request->session()->put('user_token', $request->user_token);
-		Notification::send($user, $verify);
-		return redirect(route('auth.success_registration', $user->id));
+		Mail::to($user->email)->send(new VerifyEmail($user));
+		return redirect(route('auth.success_registration'));
 	}
 
 	public function login(LoginRequest $request): RedirectResponse
@@ -29,7 +28,7 @@ class AuthController extends Controller
 			return back()->withErrors(['login_error' => trans('messages.login_error')]);
 		} elseif (auth()->attempt($credentials, $request->remember) && !$user->email_verified_at) {
 			auth()->logout();
-			return redirect(route('auth.success_registration', $user->id));
+			return redirect(route('auth.success_registration'));
 		}
 		return redirect(route('landing.worldwide'));
 	}

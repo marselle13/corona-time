@@ -41,6 +41,6 @@ Route::controller(ResetPasswordController::class)->middleware(['guest', 'checkVe
 	Route::patch('/new-password/{userId}/{token}', 'updatePassword')->middleware('verify')->name('auth.update_password');
 });
 
-Route::controller(VerifyEmailController::class)->middleware('guest')->group(function () {
-	Route::get('/register/confirmation-email/{token}', 'confirmation')->name('auth.success_confirmation');
+Route::controller(VerifyEmailController::class)->middleware(['guest', 'verify'])->group(function () {
+	Route::get('/register/confirmation-email/{userId}/{token}', 'confirmation')->name('auth.success_confirmation');
 });
