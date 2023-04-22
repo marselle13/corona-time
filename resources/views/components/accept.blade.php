@@ -1,4 +1,4 @@
-@props(['verify','button','info'])
+@props(['link','button','info'])
 <style>
     html, body {
         font-family: 'inter', sans-serif;
@@ -92,7 +92,7 @@
             <p>{{$info}}</p>
         </div>
         <div class="button">
-            <a class="button-text" href="{{$verify}}"><span>{{$button}}</span></a>
+            <a class="button-text" href="{{$link}}"><span>{{$button}}</span></a>
         </div>
     </div>
 </div>

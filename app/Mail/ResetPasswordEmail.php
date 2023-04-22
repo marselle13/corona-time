@@ -23,7 +23,7 @@ class ResetPasswordEmail extends Mailable
 	{
 		$this->generateResetToken($this->user);
 		return $this->subject(trans('messages.recover'))
-			->view('auth.confirmation-recover')
+			->view('password.recover')
 			->with([
 				'reset' => $this->user->user_token,
 				'user'  => $this->user,
