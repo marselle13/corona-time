@@ -27,7 +27,7 @@ Route::middleware('guest')->group(function () {
 	Route::view('/success-recover', 'success.password-recover')->name('successes.password_recover');
 	Route::view('/new-password/{userId}/{token}', 'password.update-page')->middleware(['checkVerified', 'verify'])->name('passwords.update_page');
 	Route::view('/register', 'auth.register-page')->name('auth.register_page');
-	Route::view('/register/success-registration/', 'auth.success-registration')->name('auth.success_registration');
+	Route::view('/register/success-registration/', 'success.registration')->name('successes.registration');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
@@ -42,5 +42,5 @@ Route::controller(ResetPasswordController::class)->middleware(['guest', 'checkVe
 });
 
 Route::controller(VerifyEmailController::class)->middleware(['guest', 'verify'])->group(function () {
-	Route::get('/register/confirmation-email/{userId}/{token}', 'confirmation')->name('auth.success_confirmation');
+	Route::get('/register/confirmation-email/{userId}/{token}', 'confirmation')->name('emails.confirmation');
 });

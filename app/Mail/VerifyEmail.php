@@ -24,7 +24,7 @@ class VerifyEmail extends Mailable
 		$this->generateVerifyToken($this->user);
 
 		return $this->subject(trans('messages.verify'))
-			->view('auth.confirmation-email')
+			->view('email.confirmation')
 			->with([
 				'verify' => $this->user->user_token,
 				'user'   => $this->user,

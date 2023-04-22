@@ -12,6 +12,6 @@ class VerifyEmailController extends Controller
 		$userId->markEmailAsVerified();
 		$userId->user_token = null;
 		$userId->save();
-		return view('auth.success-confirmation');
+		return view('success.confirmation');
 	}
 }

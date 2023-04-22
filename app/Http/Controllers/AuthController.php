@@ -15,7 +15,7 @@ class AuthController extends Controller
 	{
 		$user = User::create($request->except('password_confirmation'));
 		Mail::to($user->email)->send(new VerifyEmail($user));
-		return redirect(route('auth.success_registration'));
+		return redirect(route('successes.registration'));
 	}
 
 	public function login(LoginRequest $request): RedirectResponse
@@ -28,7 +28,7 @@ class AuthController extends Controller
 			return back()->withErrors(['login_error' => trans('messages.login_error')]);
 		} elseif (auth()->attempt($credentials, $request->remember) && !$user->email_verified_at) {
 			auth()->logout();
-			return redirect(route('auth.success_registration'));
+			return redirect(route('successes.registration'));
 		}
 		return redirect(route('landing.worldwide'));
 	}

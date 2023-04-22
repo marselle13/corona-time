@@ -23,6 +23,7 @@ return[
 	'password_placeholder'   => 'შეიყვანეთ პაროლი',
 	'remember_device'        => 'დამახსოვრება',
 	'sign_up'                => 'რეგისტრაცია',
+	'sign_in'                => 'ავტორიზაცია',
 	'log_in'                 => 'შესვლა',
 	'new_password'           => 'ახალი პაროლი',
 	'new_placeholder'        => 'შეიყვანეთ ახალი პაროლი',

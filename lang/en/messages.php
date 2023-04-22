@@ -23,6 +23,7 @@ return [
 	'password_placeholder'   => 'Fill in password',
 	'remember_device'        => 'Remember this device',
 	'sign_up'                => 'Sign Up',
+	'sign_in'                => 'Sign In',
 	'log_in'                 => 'Log In',
 	'new_password'           => 'New Password',
 	'new_placeholder'        => 'Enter new password',
