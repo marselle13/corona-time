@@ -2,12 +2,19 @@
     <div class="flex md:justify-between justify-center">
         <x-form.container>
             <x-form.auth info="{{trans('messages.info_login')}}">{{trans('messages.welcome_login')}}</x-form.auth>
-            <form action="#" class="lg:w-[392px] md:space-y-6 space-y-4  ">
-                <x-form.input name="{{trans('messages.username')}}" placeholder="{{trans('messages.login_placeholder')}}"/>
-                <x-form.input name="{{trans('messages.password')}}" type="password" placeholder="{{trans('messages.password_placeholder')}}"/>
+            <form method="POST" action="{{route('auth.login')}}" class="md:w-[392px] md:space-y-6 space-y-4  ">
+                @csrf
+                <x-form.input name="username_email" label="{{trans('messages.username')}}" placeholder="{{trans('messages.login_placeholder')}}" value="{{old('username_email')}}"/>
+                <x-form.input name="password" label="{{trans('messages.password')}}" type="password" placeholder="{{trans('messages.password_placeholder')}}"/>
+                @if($errors->has('login_error'))
+                    <div class="flex gap-2.5">
+                        <x-form.error-icon/>
+                        <p class="text-sm text-[#CC1E1E] pt-[1px]">{{$errors->first('login_error')}}</p>
+                    </div>
+                @endif
                 <div class="flex justify-between gap-2">
                     <x-form.checkbox/>
-                    <a href="{{route('auth.reset_password')}}" class="text-[#2029F3] text-sm font-semibold">{{trans('messages.forget_password')}}</a>
+                    <a href="{{route('passwords.reset_page')}}" class="text-[#2029F3] text-sm font-semibold">{{trans('messages.forget_password')}}</a>
                 </div>
                 <x-form.button>{{trans('messages.log_in')}}</x-form.button>
                 <div class="text-center"><p class="text-[#808189] text-sm md:text-base">{{trans('messages.no_account')}} <a

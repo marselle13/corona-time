@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\auth;
+namespace App\Http\Requests\password;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 
-class RegisterRequest extends FormRequest
+class UpdatePasswordRequest extends FormRequest
 {
 	/**
 	 * Get the validation rules that apply to the request.
@@ -15,9 +14,7 @@ class RegisterRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'username'              => 'required|min:3|unique:users,username',
-			'email'                 => 'required|email|unique:users,email',
-			'password'              => 'required|confirmed|min:3',
+			'password'              => 'required|min:3|confirmed',
 			'password_confirmation' => 'required',
 		];
 	}
@@ -30,9 +27,8 @@ class RegisterRequest extends FormRequest
 	public function attributes(): array
 	{
 		return [
-			'username' => trans('messages.username'),
-			'email'    => trans('messages.email'),
-			'password' => trans('messages.password'),
+			'password'                  => trans('messages.new_password'),
+			'password_confirmation'     => 'Repeat Password',
 		];
 	}
 
@@ -40,7 +36,6 @@ class RegisterRequest extends FormRequest
 	{
 		$this->merge([
 			'password'       => bcrypt($this->password),
-			'user_token'     => Str::random(60),
 		]);
 	}
 }
