@@ -13,7 +13,7 @@
             <form method="POST" action="{{route('auth.logout')}}">
                 @csrf
                 <div class="px-4 block py-2 hover:bg-gray-100 ">
-                    <button type="submit">Log Out</button>
+                    <button type="submit">{{trans('messages.log_out')}}</button>
                 </div>
             </form>
         </li>
