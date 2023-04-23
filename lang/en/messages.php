@@ -43,6 +43,7 @@ return [
 	'georgian'                => 'Georgian',
 	'world_statistic'         => 'Worldwide Statistics',
 	'world'                   => 'Worldwide',
+	'country_statistic'       => 'Statistics by country',
 	'by_country'              => 'By Country',
 	'new_cases'               => 'New Cases',
 	'recovered'               => 'Recovered',

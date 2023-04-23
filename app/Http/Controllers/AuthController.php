@@ -27,7 +27,7 @@ class AuthController extends Controller
 		if (!auth()->attempt($credentials, $request->remember)) {
 			return back()->withErrors(['login_error' => trans('messages.login_error')]);
 		}
-		return redirect(route('landing.worldwide'));
+		return redirect(route('landings.worldwide'));
 	}
 
 	public function logout()

@@ -22,7 +22,8 @@ Route::post('/language', [LanguageController::class, 'setLanguage'])->name('lang
 
 Route::redirect('/', '/worldwide');
 Route::controller(DashboardController::class)->middleware(['auth', 'verified'])->group(function () {
-	Route::get('/worldwide', 'worldwidePage')->name('landing.worldwide');
+	Route::get('/worldwide', 'worldwidePage')->name('landings.worldwide');
+	Route::get('/country', 'byCountryPage')->name('landings.country');
 });
 
 Route::middleware('guest')->group(function () {

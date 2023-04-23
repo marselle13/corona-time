@@ -8,4 +8,9 @@ class DashboardController extends Controller
 	{
 		return view('landing.worldwide', ['username' => auth()->user()->username]);
 	}
+
+	public function byCountryPage()
+	{
+		return view('landing.country', ['username' => auth()->user()->username]);
+	}
 }
