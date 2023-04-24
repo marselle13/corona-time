@@ -44,19 +44,19 @@ class FetchCovidData extends Command
 			$statistics = json_decode($responsePost->getBody(), true);
 			return array_merge($country, $statistics);
 		});
-		collect($data)->each(function ($item) {
-			Statistic::updateOrCreate([
-				'id'         => $item['id'],
-				'code'       => $item['code'],
-				'name'       => $item['name'],
-				'country'    => $item['country'],
-				'confirmed'  => $item['confirmed'],
-				'recovered'  => $item['recovered'],
-				'critical'   => $item['critical'],
-				'deaths'     => $item['deaths'],
-				'created_at' => $item['created_at'],
-				'updated_at' => $item['updated_at'],
-			]);
-		});
+		collect($data)->each(
+			function ($item) {
+				Statistic::upsert([
+					'id'         => $item['id'],
+					'code'       => $item['code'],
+					'name'       => json_encode($item['name']),
+					'country'    => $item['country'],
+					'confirmed'  => $item['confirmed'],
+					'recovered'  => $item['recovered'],
+					'critical'   => $item['critical'],
+					'deaths'     => $item['deaths'],
+				], ['id', 'code', 'name', 'country'], ['confirmed', 'recovered', 'critical', 'deaths']);
+			}
+		);
 	}
 }
