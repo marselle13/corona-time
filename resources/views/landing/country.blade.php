@@ -16,6 +16,6 @@
                        placeholder="Search by country">
             </div>
         </form>
-        <x-table/>
+        <x-table :countries="$countries"/>
     </main>
 </x-layout>
