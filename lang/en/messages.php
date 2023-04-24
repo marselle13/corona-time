@@ -48,4 +48,5 @@ return [
 	'new_cases'               => 'New Cases',
 	'recovered'               => 'Recovered',
 	'death'                   => 'Death',
+	'location'                => 'Location',
 ];

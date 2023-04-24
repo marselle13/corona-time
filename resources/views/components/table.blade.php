@@ -4,7 +4,7 @@
         <tr class="w-full flex">
             <th class="pl-4 md:pl-10 py-5 w-1/4 lg:w-1/6">
                 <div class="flex items-center gap-1 md:gap-2">
-                    Location
+                    {{trans('messages.location')}}
                     <svg width="16" height="24" viewBox="0 0 16 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 18.5L3 13.5H13L8 18.5Z" fill="#010414"/>
@@ -14,7 +14,7 @@
             </th>
             <th class="pl-4 md:pl-10 py-5 w-1/4 lg:w-1/6">
                 <div class="flex items-center gap-1 md:gap-2 whitespace-nowrap ">
-                    New cases
+                    {{trans('messages.new_cases')}}
                     <svg class="flex-shrink-0 flex" width="16" height="24" viewBox="0 0 16 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 18.5L3 13.5H13L8 18.5Z" fill="#BFC0C4"/>
@@ -24,7 +24,7 @@
             </th>
             <th class="pl-4 md:pl-10 py-5 w-1/4 lg:w-1/6">
                 <div class="flex items-center gap-1 md:gap-2">
-                    Deaths
+                    {{trans('messages.death')}}
                     <svg width="16" height="24" viewBox="0 0 16 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 18.5L3 13.5H13L8 18.5Z" fill="#BFC0C4"/>
@@ -34,7 +34,7 @@
             </th>
             <th class="md:pl-10 py-5 w-1/4 lg:w-1/6">
                 <div class="flex items-center gap-1 md:gap-2">
-                    Recovered
+                    {{trans('messages.recovered')}}
                     <svg width="16" height="24" viewBox="0 0 16 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 18.5L3 13.5H13L8 18.5Z" fill="#BFC0C4"/>
