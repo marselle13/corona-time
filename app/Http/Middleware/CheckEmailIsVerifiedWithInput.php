@@ -19,12 +19,9 @@ class CheckEmailIsVerifiedWithInput
 	{
 		$usernameOrEmail = $request->input('username_email');
 		$user = User::where('username', $usernameOrEmail)->orWhere('email', $usernameOrEmail)->first();
-
 		if ($user && auth()->validate(['email' => $user->email, 'password' => $request->input('password')])) {
 			if ($user instanceof MustVerifyEmail && !$user->hasVerifiedEmail()) {
 				return redirect()->route('successes.registration');
-			} else {
-				auth()->login($user);
 			}
 		}
 		return $next($request);

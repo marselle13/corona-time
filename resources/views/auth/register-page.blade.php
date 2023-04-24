@@ -2,7 +2,7 @@
     <div class="flex md:justify-between justify-center">
         <x-form.container>
             <x-form.auth info="{{trans('messages.info_register')}}">{{trans('messages.welcome_register')}}</x-form.auth>
-            <form method="POST" action="{{route('auth.register')}}" class="md:w-[392px] md:space-y-6 space-y-4">
+            <form method="POST" action="{{route('auth.register')}}" class="md:w-[392px] md:space-y-6 space-y-4 pb-10">
                 @csrf
                 <div class="space-y-2">
                     <x-form.input name="username" label="{{trans('messages.username')}}"

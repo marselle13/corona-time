@@ -1,8 +1,26 @@
 <form id="language-form" method="POST" action="{{ route('language.set')}}" class="flex items-end">
     @csrf
-    <label for='language' class="hidden">language</label>
-    <select id='language' name='locale' class="border-none focus:ring-0" onchange="this.form.submit()">
-        <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>EN</option>
-        <option value="ka" {{ app()->getLocale() == 'ka' ? 'selected' : '' }}>KA</option>
-    </select>
+    <button id="states-button" data-dropdown-toggle="dropdown-states"
+            class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-center rounded-md hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
+            type="button">
+        {{app()->getLocale() == 'en' ? trans('messages.english') : trans('messages.georgian')}}
+        <x-dropdown-icon/>
+    </button>
+    <div id="dropdown-states" class="z-10 hidden">
+        <ul {{$attributes->class(['list-none flex flex-col absolute bg-gray-50 rounded-lg shadow w-36 -right-[68px]'])}}>
+            <li class="inline-block">
+                <button type="submit" name="locale" value="en"
+                        class="py-2 px-4 w-full hover:bg-gray-100  border-none bg-transparent focus:outline-none {{ app()->getLocale() == 'en' ? 'text-blue-500' : 'text-gray-500' }}">
+                    {{trans('messages.english')}}
+                </button>
+            </li>
+            <li class="inline-block">
+                <button type="submit" name="locale" value="ka"
+                        class="py-2 px-4  w-full hover:bg-gray-100 border-none bg-transparent focus:outline-none {{ app()->getLocale() == 'ka' ? 'text-blue-500' : 'text-gray-500' }}">
+                    {{trans('messages.georgian')}}
+                </button>
+            </li>
+        </ul>
+    </div>
 </form>
+
