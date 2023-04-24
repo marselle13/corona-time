@@ -11,9 +11,11 @@
                             stroke="#010414"/>
                     </svg>
                 </div>
-                <input type="text"
-                       class="text-sm w-60 rounded-lg md:border-1 md:border-[#E6E6E7] border-transparent focus:ring-0 md:focus:ring-1 pl-12 md:pl-14 placeholder-[#808189] placeholder-text-lg py-3"
-                       placeholder="Search by country">
+                <form method="GET" action="{{route('landings.country')}}">
+                    <input type="text" name="search"
+                           class="text-sm w-60 rounded-lg md:border-1 md:border-[#E6E6E7] border-transparent focus:ring-0 md:focus:ring-1 pl-12 md:pl-14 placeholder-[#808189] placeholder-text-lg py-3"
+                           placeholder="Search by country" value="{{request('search')}}">
+                </form>
             </div>
         </form>
         <x-table :countries="$countries"/>

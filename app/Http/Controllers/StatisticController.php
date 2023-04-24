@@ -13,6 +13,11 @@ class StatisticController extends Controller
 
 	public function countryPage()
 	{
-		return view('landing.country', ['countries' => Statistic::all()]);
+		$query = ucfirst(request()->input('search'));
+		$countries = Statistic::query()
+			->where('name->en', 'LIKE', "%$query%")
+			->orWhere('name->ka', 'LIKE', "%$query%")
+			->get();
+		return view('landing.country', ['countries' => $countries]);
 	}
 }
