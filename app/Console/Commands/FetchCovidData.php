@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Covid;
+use App\Models\Statistic;
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 
@@ -45,7 +45,7 @@ class FetchCovidData extends Command
 			return array_merge($country, $statistics);
 		});
 		collect($data)->each(function ($item) {
-			Covid::updateOrCreate([
+			Statistic::updateOrCreate([
 				'id'         => $item['id'],
 				'code'       => $item['code'],
 				'name'       => $item['name'],

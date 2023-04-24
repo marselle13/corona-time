@@ -10,7 +10,7 @@ return new class extends Migration {
 	 */
 	public function up(): void
 	{
-		Schema::create('covids', function (Blueprint $table) {
+		Schema::create('statistics', function (Blueprint $table) {
 			$table->id();
 			$table->string('code');
 			$table->json('name');
