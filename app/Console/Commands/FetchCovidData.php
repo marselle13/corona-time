@@ -46,17 +46,27 @@ class FetchCovidData extends Command
 		});
 		collect($data)->each(
 			function ($item) {
-				Statistic::upsert([
-					'id'         => $item['id'],
-					'code'       => $item['code'],
-					'name'       => json_encode($item['name']),
-					'country'    => $item['country'],
-					'confirmed'  => $item['confirmed'],
-					'recovered'  => $item['recovered'],
-					'critical'   => $item['critical'],
-					'deaths'     => $item['deaths'],
-				], ['id', 'code', 'name', 'country'], ['confirmed', 'recovered', 'critical', 'deaths']);
+				Statistic::updateOrCreate(
+					['code'    => $item['code'], 'country' => $item['country'], 'created_at' => $item['created_at']],
+					[
+						'name'       => $item['name'],
+						'confirmed'  => $item['confirmed'],
+						'recovered'  => $item['recovered'],
+						'critical'   => $item['critical'],
+						'deaths'     => $item['deaths'],
+						'updated_at' => $item['updated_at'],
+					]
+				);
 			}
+		);
+		Statistic::updateOrCreate(
+			['code'    => 'WW', 'country' => 'worldwide'],
+			[
+				'name'      => ['en' => 'worldwide', 'ka' => 'მსოფლიო'],
+				'confirmed' => collect($data)->sum('confirmed'),
+				'recovered' => collect($data)->sum('recovered'),
+				'critical'  => collect($data)->sum('critical'),
+				'deaths'    => collect($data)->sum('deaths'), ]
 		);
 	}
 }
