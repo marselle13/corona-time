@@ -1,3 +1,4 @@
+@props(['countries'])
 <div class="relative sm:rounded-lg overflow-x-auto">
     <table class="w-full text-sm text-left text-gray-500 ">
         <thead class="text-xs text-[#010414] uppercase bg-[#F6F6F7] font-semibold flex w-full ">
@@ -44,134 +45,23 @@
             </th>
         </tr>
         </thead>
-        <tbody
-            class="overflow-y-scroll flex flex-col w-full items-center justify-between scrollbar-thin scrollbar-thumb-[#808189] scrollbar-thumb-rounded h-[543px]">
+        <tbody class="overflow-y-scroll flex flex-col w-full items-center scrollbar-thin scrollbar-thumb-[#808189] scrollbar-thumb-rounded h-[543px]">
+        @foreach($countries as $country)
         <tr class="flex bg-white border-b border-[#F6F6F7] w-full">
             <td class="pl-4 md:pl-10 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                Worldwide
+                {{$country->name}}
             </td>
             <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                9,704,000
+                {{$country->confirmed}}
             </td>
             <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                66,591
+                {{$country->recovered}}
             </td>
             <td class="md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                5,803,905
+                {{$country->deaths}}
             </td>
         </tr>
-        <tr class="flex bg-white border-b border-[#F6F6F7] w-full">
-            <td class="pl-4 md:pl-10 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                Worldwide
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                9,704,000
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                66,591
-            </td>
-            <td class="md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                5,803,905
-            </td>
-        </tr>
-        <tr class="flex bg-white border-b border-[#F6F6F7] w-full">
-            <td class="pl-4 md:pl-10 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                Worldwide
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                9,704,000
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                66,591
-            </td>
-            <td class="md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                5,803,905
-            </td>
-        </tr>
-        <tr class="flex bg-white border-b border-[#F6F6F7] w-full">
-            <td class="pl-4 md:pl-10 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                Worldwide
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                9,704,000
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                66,591
-            </td>
-            <td class="md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                5,803,905
-            </td>
-        </tr>
-        <tr class="flex bg-white border-b border-[#F6F6F7] w-full">
-            <td class="pl-4 md:pl-10 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                Worldwide
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                9,704,000
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                66,591
-            </td>
-            <td class="md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                5,803,905
-            </td>
-        </tr>
-        <tr class="flex bg-white border-b border-[#F6F6F7] w-full">
-            <td class="pl-4 md:pl-10 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                Worldwide
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                9,704,000
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                66,591
-            </td>
-            <td class="md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                5,803,905
-            </td>
-        </tr>
-        <tr class="flex bg-white border-b border-[#F6F6F7] w-full">
-            <td class="pl-4 md:pl-10 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                Worldwide
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                9,704,000
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                66,591
-            </td>
-            <td class="md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                5,803,905
-            </td>
-        </tr>
-        <tr class="flex bg-white border-b border-[#F6F6F7] w-full">
-            <td class="pl-4 md:pl-10 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                Worldwide
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                9,704,000
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                66,591
-            </td>
-            <td class="md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                5,803,905
-            </td>
-        </tr>
-        <tr class="flex bg-white border-b border-[#F6F6F7] w-full">
-            <td class="pl-4 md:pl-10 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                Worldwide
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                9,704,000
-            </td>
-            <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                66,591
-            </td>
-            <td class="md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                5,803,905
-            </td>
-        </tr>
+        @endforeach
         </tbody>
     </table>
 </div>

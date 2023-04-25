@@ -5,7 +5,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\VerifyEmailController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StatisticController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +21,10 @@ use App\Http\Controllers\DashboardController;
 Route::post('/language', [LanguageController::class, 'setLanguage'])->name('language.set');
 
 Route::redirect('/', '/worldwide');
-Route::controller(DashboardController::class)->middleware(['auth', 'verified'])->group(function () {
+
+Route::controller(StatisticController::class)->group(function () {
 	Route::get('/worldwide', 'worldwidePage')->name('landings.worldwide');
-	Route::get('/country', 'byCountryPage')->name('landings.country');
+	Route::get('/country', 'countryPage')->name('landings.country');
 });
 
 Route::middleware('guest')->group(function () {

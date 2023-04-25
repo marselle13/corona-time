@@ -3,7 +3,7 @@
         <img src="{{asset('./images/coronatime.png')}}" alt="coronatime"/>
         <div class="flex md:gap-10 items-center overflow-x-auto">
             <x-lang-dropdown class="top-6"/>
-            <x-navbar-dropdown :username="$username"/>
+            <x-navbar-dropdown/>
         </div>
     </div>
 </header>

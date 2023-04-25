@@ -49,4 +49,5 @@ return [
 	'recovered'               => 'Recovered',
 	'death'                   => 'Death',
 	'location'                => 'Location',
+	'no_data'                 => 'No Data To Show',
 ];
