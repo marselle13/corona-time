@@ -21,8 +21,11 @@ class StatisticController extends Controller
 		$locale = app()->getLocale();
 		$search = ucfirst(request()->query('search'));
 
+		$worldwide = Statistic::where('name->en', 'worldwide')->first();
+
 		$query = Statistic::query()
-			->where("name->$locale", 'LIKE', "%$search%");
+			->where("name->$locale", 'LIKE', "%$search%")
+			->where('id', '!=', $worldwide->id);
 
 		if (request()->query('confirmed')) {
 			$query->orderBy('confirmed', request()->query('confirmed'));
@@ -34,6 +37,10 @@ class StatisticController extends Controller
 			$query->orderBy("name->$locale", request()->query('location'));
 		}
 
-		return $query->get();
+		$countries = $query->get();
+
+		$countries->prepend($worldwide);
+
+		return $countries;
 	}
 }
