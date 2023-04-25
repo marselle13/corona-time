@@ -32,6 +32,7 @@ class AuthController extends Controller
 
 	public function logout()
 	{
+		auth()->user()->setRememberToken(null);
 		auth()->logout();
 		return redirect()->route('auth.login_page');
 	}

@@ -13,7 +13,7 @@
                         <x-form.sort-buttons name="location"/>
                     </div>
                 </th>
-                <th class="pl-4 md:pl-10 py-5 w-1/4 lg:w-1/6">
+                <th class="{{app()->getLocale() == 'en' ? 'pl-2' : "-ml-2"}} md:pl-10 py-5 w-1/4 lg:w-1/6">
                     <div class="flex items-center gap-1 md:gap-2 whitespace-nowrap">
                         {{trans('messages.new_cases')}}
                         <x-form.sort-buttons name="confirmed"/>
