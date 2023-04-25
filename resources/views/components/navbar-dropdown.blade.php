@@ -6,7 +6,7 @@
 <div class="hidden md:block md:w-auto absolute top-20 w-[140px] md:static right-4" id="navbar-default">
     <ul class="font-medium flex flex-col md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white ">
         <li>
-            <h4 class="font-bold px-4 py-2">{{$username}}</h4>
+            <h4 class="font-bold px-4 py-2">{{auth()->user()->username}}</h4>
         </li>
         <div class="border-r-2 border-[#F6F6F6]"></div>
         <li>

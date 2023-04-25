@@ -13,11 +13,27 @@ class StatisticController extends Controller
 
 	public function countryPage()
 	{
-		$query = ucfirst(request()->input('search'));
-		$countries = Statistic::query()
-			->where('name->en', 'LIKE', "%$query%")
-			->orWhere('name->ka', 'LIKE', "%$query%")
-			->get();
-		return view('landing.country', ['countries' => $countries]);
+		return view('landing.country', ['countries' => $this->countriesFilter()]);
+	}
+
+	public function countriesFilter()
+	{
+		$locale = app()->getLocale();
+		$search = ucfirst(request()->query('search'));
+
+		$query = Statistic::query()
+			->where("name->$locale", 'LIKE', "%$search%");
+
+		if (request()->query('confirmed')) {
+			$query->orderBy('confirmed', request()->query('confirmed'));
+		} elseif (request()->query('recovered')) {
+			$query->orderBy('recovered', request()->query('recovered'));
+		} elseif (request()->query('deaths')) {
+			$query->orderBy('deaths', request()->query('deaths'));
+		} elseif (request()->query('location')) {
+			$query->orderBy("name->$locale", request()->query('location'));
+		}
+
+		return $query->get();
 	}
 }
