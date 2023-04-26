@@ -35,18 +35,18 @@
         <tbody
             class="overflow-y-scroll flex flex-col w-full items-center scrollbar-thin scrollbar-thumb-[#808189] scrollbar-thumb-rounded h-[543px]">
         @foreach($countries as $country)
-            <tr class="flex bg-white border-b border-[#F6F6F7] w-full">
+                <tr class="flex bg-white border-b border-[#F6F6F7] w-full">
                 <td class="pl-4 md:pl-10 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                    {{$country->name}}
+                    {{$country?->name}}
                 </td>
                 <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                    {{$country->confirmed}}
+                    {{$country?->confirmed}}
                 </td>
                 <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                    {{$country->deaths}}
+                    {{$country?->deaths}}
                 </td>
                 <td class="md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
-                    {{$country->recovered}}
+                    {{$country?->recovered}}
                 </td>
             </tr>
         @endforeach

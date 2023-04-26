@@ -21,8 +21,9 @@ class Statistic extends Model
 		$sort = request()->query('sort');
 		$order = request()->query('order');
 		$worldwide = $this->where('name->en', 'worldwide')->first();
+
 		$query->where("name->$locale", 'LIKE', "%$search%")
-			->where('id', '!=', $worldwide->id);
+			->where('id', '!=', $worldwide?->id);
 
 		if ($order && $sort !== 'location') {
 			$query->orderBy($sort, $order);
