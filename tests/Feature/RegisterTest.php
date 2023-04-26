@@ -20,7 +20,7 @@ class RegisterTest extends TestCase
 
 		foreach ($languages as $language) {
 			app()->setLocale($language);
-			$response = $this->get('/register');
+			$response = $this->get(route('auth.register_page'));
 			$response->assertSuccessful();
 			$response->assertSee(trans('messages.welcome_register'));
 			$response->assertViewIs('auth.register-page');
@@ -29,7 +29,7 @@ class RegisterTest extends TestCase
 
 	public function test_register_page_should_give_us_errors_if_inputs_is_not_provided(): void
 	{
-		$response = $this->post('/register');
+		$response = $this->post(route('auth.register'));
 		$response->assertSessionHasErrors(['username', 'email', 'password', 'password_confirmation']);
 	}
 
@@ -47,7 +47,7 @@ class RegisterTest extends TestCase
 			]
 		);
 
-		$response = $this->post('/register', [
+		$response = $this->post(route('auth.register'), [
 			'username'              => $username,
 			'email'                 => $email,
 			'password'              => $password,
@@ -62,7 +62,7 @@ class RegisterTest extends TestCase
 		$email = 'example@gmail.com';
 		$password = 'password';
 
-		$response = $this->post('/register', [
+		$response = $this->post(route('auth.register'), [
 			'username'              => $username,
 			'email'                 => $email,
 			'password'              => $password,
