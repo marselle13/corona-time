@@ -3,21 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Statistic;
+use Illuminate\View\View;
 
 class StatisticController extends Controller
 {
-	public function worldwidePage()
+	public function worldwidePage(): View
 	{
 		return view('landing.worldwide', ['worldwide' => Statistic::all()->last()]);
 	}
 
-	public function countryPage()
+	public function countryPage(): View
 	{
-		$query = ucfirst(request()->input('search'));
-		$countries = Statistic::query()
-			->where('name->en', 'LIKE', "%$query%")
-			->orWhere('name->ka', 'LIKE', "%$query%")
-			->get();
-		return view('landing.country', ['countries' => $countries]);
+		$worldwide = Statistic::where('name->en', 'worldwide')->first();
+		return view('landing.country', ['countries' => Statistic::countriesFilter()->get()->prepend($worldwide)]);
 	}
 }

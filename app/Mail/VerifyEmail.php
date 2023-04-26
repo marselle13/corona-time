@@ -19,7 +19,7 @@ class VerifyEmail extends Mailable
 	{
 	}
 
-	public function build()
+	public function build(): Mailable
 	{
 		$this->generateVerifyToken($this->user);
 

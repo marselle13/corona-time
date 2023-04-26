@@ -30,8 +30,9 @@ class AuthController extends Controller
 		return redirect(route('landings.worldwide'));
 	}
 
-	public function logout()
+	public function logout(): RedirectResponse
 	{
+		auth()->user()->setRememberToken(null);
 		auth()->logout();
 		return redirect()->route('auth.login_page');
 	}

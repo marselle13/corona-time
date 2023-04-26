@@ -19,7 +19,7 @@ class ResetPasswordEmail extends Mailable
 	{
 	}
 
-	public function build()
+	public function build(): Mailable
 	{
 		$this->generateResetToken($this->user);
 		return $this->subject(trans('messages.recover'))
@@ -30,7 +30,7 @@ class ResetPasswordEmail extends Mailable
 			]);
 	}
 
-	private function generateResetToken(User $user)
+	private function generateResetToken(User $user): void
 	{
 		$user->user_token = Str::random(40);
 		$user->save();

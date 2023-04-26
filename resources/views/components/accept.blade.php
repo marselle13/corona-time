@@ -2,7 +2,6 @@
 <style>
     html, body {
         font-family: 'inter', sans-serif;
-        width: 100%;
         overflow-x: hidden;
     }
 
