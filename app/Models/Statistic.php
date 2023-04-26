@@ -13,4 +13,21 @@ class Statistic extends Model
 	public $translatable = ['name'];
 
 	protected $guarded = [];
+
+	public function scopeCountriesFilter($query): void
+	{
+		$locale = app()->getLocale();
+		$search = ucfirst(request()->query('search'));
+		$sort = request()->query('sort');
+		$order = request()->query('order');
+		$worldwide = $this->where('name->en', 'worldwide')->first();
+		$query->where("name->$locale", 'LIKE', "%$search%")
+			->where('id', '!=', $worldwide->id);
+
+		if ($order && $sort !== 'location') {
+			$query->orderBy($sort, $order);
+		} elseif ($order && $sort === 'location') {
+			$query->orderBy("name->$locale", $order);
+		}
+	}
 }
