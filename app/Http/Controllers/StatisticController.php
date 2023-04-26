@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Statistic;
+use Illuminate\Support\Collection;
+use Illuminate\View\View;
 
 class StatisticController extends Controller
 {
-	public function worldwidePage()
+	public function worldwidePage(): View
 	{
 		return view('landing.worldwide', ['worldwide' => Statistic::all()->last()]);
 	}
 
-	public function countryPage()
+	public function countryPage(): View
 	{
 		return view('landing.country', ['countries' => $this->countriesFilter()]);
 	}
 
-	public function countriesFilter()
+	public function countriesFilter(): Collection
 	{
 		$locale = app()->getLocale();
 		$search = ucfirst(request()->query('search'));
