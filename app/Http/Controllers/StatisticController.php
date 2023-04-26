@@ -22,21 +22,18 @@ class StatisticController extends Controller
 	{
 		$locale = app()->getLocale();
 		$search = ucfirst(request()->query('search'));
-
+		$sort = request()->query('sort');
+		$order = request()->query('order');
 		$worldwide = Statistic::where('name->en', 'worldwide')->first();
 
 		$query = Statistic::query()
 			->where("name->$locale", 'LIKE', "%$search%")
 			->where('id', '!=', $worldwide->id);
 
-		if (request()->query('confirmed')) {
-			$query->orderBy('confirmed', request()->query('confirmed'));
-		} elseif (request()->query('recovered')) {
-			$query->orderBy('recovered', request()->query('recovered'));
-		} elseif (request()->query('deaths')) {
-			$query->orderBy('deaths', request()->query('deaths'));
-		} elseif (request()->query('location')) {
-			$query->orderBy("name->$locale", request()->query('location'));
+		if ($order && $sort !== 'location') {
+			$query->orderBy($sort, $order);
+		} elseif ($order && $sort === 'location') {
+			$query->orderBy("name->$locale", $order);
 		}
 
 		$countries = $query->get();

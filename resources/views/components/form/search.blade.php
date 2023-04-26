@@ -10,15 +10,9 @@
         <input type="text" name="search"
                class="text-sm w-60 rounded-lg md:border-1 md:border-[#E6E6E7] border-transparent focus:ring-0 md:focus:ring-1 pl-12 md:pl-14 placeholder-[#808189] placeholder-text-lg py-3"
                placeholder="Search by country" value="{{request('search')}}">
-        @if(request('confirmed'))
-            <input type="hidden" name="confirmed" value="{{request('confirmed')}}">
-        @elseif(request('deaths'))
-            <input type="hidden" name="deaths" value="{{request('deaths')}}">
-
-        @elseif(request('recovered'))
-            <input type="hidden" name="recovered" value="{{request('recovered')}}">
-        @elseif(request('location'))
-            <input type="hidden" name="location" value="{{request('location')}}">
+        @if(request('sort'))
+            <input type="hidden" name="sort" value="{{request('sort')}}"/>
+            <input type="hidden" name="order" value="{{request('order')}}"/>
         @endif
     </div>
 </form>

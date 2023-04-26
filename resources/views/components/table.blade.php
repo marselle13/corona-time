@@ -1,5 +1,4 @@
 @props(['countries'])
-<form method="GET" action="{{route('landings.country')}}" class="space-y-10">
 <div class="relative sm:rounded-lg overflow-x-auto">
     <table class="w-full text-sm text-left text-gray-500 ">
         <thead class="text-xs text-[#010414] uppercase bg-[#F6F6F7] font-semibold flex w-full ">
@@ -45,15 +44,12 @@
                 </td>
                 <td class="pl-4 md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
                     {{$country->deaths}}
-
                 </td>
                 <td class="md:pl-12 py-4 text-sm text-[#010414] w-1/4 lg:w-1/6">
                     {{$country->recovered}}
-
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
 </div>
-</form>
