@@ -21,7 +21,6 @@ use App\Http\Controllers\StatisticController;
 Route::post('/language', [LanguageController::class, 'setLanguage'])->name('language.set');
 
 Route::redirect('/', '/worldwide');
-
 Route::controller(StatisticController::class)->middleware(['auth', 'verified'])->group(function () {
 	Route::get('/worldwide', 'worldwidePage')->name('landings.worldwide');
 	Route::get('/country', 'countryPage')->name('landings.country');
