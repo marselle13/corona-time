@@ -25,7 +25,7 @@ class AuthTest extends TestCase
 
 	public function test_unauthorized_user_should_redirect_to_login_page_if_tries_to_go_on_auth_page(): void
 	{
-		$response = $this->get('/worldwide');
+		$response = $this->get(route('landings.worldwide'));
 		$response->assertRedirect(route('auth.login_page'));
 	}
 
@@ -72,6 +72,7 @@ class AuthTest extends TestCase
 			'username_email'    => $email,
 			'password'          => $password,
 		]);
+
 		$response->assertRedirect(route('successes.registration'));
 	}
 
@@ -93,6 +94,7 @@ class AuthTest extends TestCase
 			'username_email'    => $email,
 			'password'          => $password,
 		]);
+
 		$response->assertRedirect(route('landings.worldwide'));
 		$response = $this->post(route('auth.logout'));
 		$response->assertRedirect(route('auth.login'));

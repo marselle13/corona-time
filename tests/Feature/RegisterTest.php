@@ -104,11 +104,9 @@ class RegisterTest extends TestCase
 
 		$verificationUrl = URL::route('emails.confirmation', ['user' => $user, 'token' => $user->user_token]);
 		$response = $this->get($verificationUrl);
-
 		$response->assertViewIs('success.confirmation');
 		$response = $this->get($verificationUrl);
-		$response->assertRedirect(route('auth.login'));
-
+		$response->assertRedirect(route('auth.login_page'));
 		$this->assertNotNull($user->fresh()->email_verified_at);
 	}
 }
