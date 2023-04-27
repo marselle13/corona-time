@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Statistic;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,7 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run(): void
 	{
+		Statistic::factory()->create();
 		User::create([
 			'username'          => 'nika',
 			'email'             => 'nika@redberry.ge',
