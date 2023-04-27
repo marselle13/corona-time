@@ -18,11 +18,11 @@ class StatisticFactory extends Factory
 	{
 		$fakerKa = \Faker\Factory::create('ka_GE');
 
-		return [
+		return  [
 			'code' => fake()->countryCode(),
-			'name' => ['en' => fake()->word(),
-				'ka'           => $fakerKa->realText(10)],
-			'country'   => fake()->word(),
+			'name' => ['en' => fake()->unique()->country(),
+				'ka'           => $fakerKa->unique()->country()],
+			'country'   => fn ($attributes) => $attributes['name']['en'],
 			'confirmed' => fake()->numberBetween(0, 200000),
 			'recovered' => fake()->numberBetween(0, 200000),
 			'critical'  => fake()->numberBetween(0, 200000),

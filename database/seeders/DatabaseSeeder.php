@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		Statistic::factory()->create();
+		Statistic::factory(20)->create();
 		User::create([
 			'username'          => 'nika',
 			'email'             => 'nika@redberry.ge',
