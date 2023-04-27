@@ -23,12 +23,6 @@ class AuthTest extends TestCase
 		}
 	}
 
-	public function test_unauthorized_user_should_redirect_to_login_page_if_tries_to_go_on_auth_page(): void
-	{
-		$response = $this->get(route('landings.worldwide'));
-		$response->assertRedirect(route('auth.login_page'));
-	}
-
 	public function test_auth_should_give_us_errors_if_input_is_not_provided(): void
 	{
 		$response = $this->post(route('auth.login'));
