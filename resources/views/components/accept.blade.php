@@ -31,7 +31,7 @@
             <p style="margin: 0 auto; font-size: 20px; color: #808189;">{{$info}}</p>
         </div>
         <div style="text-align: center; margin-top: 2.5rem; background-color: #0FBA68; border-radius: 12px;">
-            <a class="button-text" style="text-align: center; text-decoration: none; font-weight: 900; color: white; text-transform: uppercase; display: inline-block; width: 100%; padding: 20px 0;" zhref="{{$link}}"><span>{{$button}}</span></a>
+            <a class="button-text" style="text-align: center; text-decoration: none; font-weight: 900; color: white; text-transform: uppercase; display: inline-block; width: 100%; padding: 20px 0;" href="{{$link}}"><span>{{$button}}</span></a>
         </div>
     </div>
 </div>
