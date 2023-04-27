@@ -17,7 +17,7 @@ class Statistic extends Model
 	public function scopeCountriesFilter($query): void
 	{
 		$locale = app()->getLocale();
-		$search = ucfirst(request()->query('search'));
+		$search = ucwords(strtolower(request()->query('search')));
 		$sort = request()->query('sort');
 		$order = request()->query('order');
 		$worldwide = $this->where('name->en', 'worldwide')->first();
