@@ -18,14 +18,6 @@ use App\Http\Controllers\StatisticController;
 |
 */
 
-Route::post('/language', [LanguageController::class, 'setLanguage'])->name('language.set');
-
-Route::redirect('/', '/worldwide');
-Route::controller(StatisticController::class)->middleware(['auth', 'verified'])->group(function () {
-	Route::get('/worldwide', 'worldwidePage')->name('landings.worldwide');
-	Route::get('/country', 'countryPage')->name('landings.country');
-});
-
 Route::middleware('guest')->group(function () {
 	Route::view('/register', 'auth.register-page')->name('auth.register_page');
 	Route::view('/register/success-registration/', 'success.registration')->name('successes.registration');
@@ -33,6 +25,14 @@ Route::middleware('guest')->group(function () {
 	Route::view('/reset-password', 'password.reset')->name('passwords.reset_page');
 	Route::view('/success-recover', 'success.password-recover')->name('successes.password_recover');
 	Route::view('/new-password/{user}/{token}', 'password.update-page')->middleware(['checkVerifiedEmail.route', 'verifyToken'])->name('passwords.update_page');
+});
+
+Route::post('/language', [LanguageController::class, 'setLanguage'])->name('language.set');
+
+Route::redirect('/', '/worldwide');
+Route::controller(StatisticController::class)->middleware(['auth', 'verified'])->group(function () {
+	Route::get('/worldwide', 'worldwidePage')->name('landings.worldwide');
+	Route::get('/country', 'countryPage')->name('landings.country');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
