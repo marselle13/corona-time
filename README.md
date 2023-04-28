@@ -5,7 +5,7 @@ This is web application to provide daily updates on coronavirus statistics world
 ### Table of Contents
 * [Prerequisites](#prerequisites)
 * [Tech Stack](#tech-stack)
-* [Getting Start](#getting-start)
+* [Getting Started](#getting-start)
 * [Migrations](#migration)
 * [Development](#development)
 * [Project Structure](#project-structure)
