@@ -35,23 +35,13 @@ class RegisterTest extends TestCase
 
 	public function test_register_page_should_give_us_errors_if_username_and_email_exists(): void
 	{
-		$username = 'example';
-		$email = 'example@gmail.com';
-		$password = 'password';
-
-		User::create(
-			[
-				'username'          => $username,
-				'email'             => $email,
-				'password'          => bcrypt($password),
-			]
-		);
+		User::factory()->create(['username' => 'example', 'email' => 'example@gmail.com', 'password' => bcrypt('password')]);
 
 		$response = $this->post(route('auth.register'), [
-			'username'              => $username,
-			'email'                 => $email,
-			'password'              => $password,
-			'password_confirmation' => $password,
+			'username'              => 'example',
+			'email'                 => 'example@gmail.com',
+			'password'              => 'password',
+			'password_confirmation' => 'password',
 		]);
 		$response->assertSessionHasErrors(['username', 'email']);
 	}
@@ -88,11 +78,9 @@ class RegisterTest extends TestCase
 
 		$user = User::where('email', $email)->first();
 
-		$token = Str::random(60);
-		$user->user_token = $token;
-		$user->save();
-
+		Mail::fake();
 		Mail::to($user->email)->send(new VerifyEmail($user));
+		Mail::assertSent(VerifyEmail::class, fn (VerifyEmail $mail) => $mail->hasTo($user->email));
 	}
 
 	public function test_verify_user_with_email_confirmation_link(): void

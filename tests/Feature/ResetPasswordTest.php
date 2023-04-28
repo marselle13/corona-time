@@ -45,10 +45,10 @@ class ResetPasswordTest extends TestCase
 		$user = User::factory()->create();
 		$response = $this->post(route('passwords.reset'), ['email' => $user->email]);
 		$response->assertRedirect(route('successes.password_recover'));
-		$user->user_token = Str::random(40);
-		$user->save();
 
+		Mail::fake();
 		Mail::to($user->email)->send(new ResetPasswordEmail($user));
+		Mail::assertSent(ResetPasswordEmail::class, fn (ResetPasswordEmail $mail) => $mail->hasTo($user->email));
 	}
 
 	public function test_verify_recover_password_with_email_confirmation_link_and_give_us_error_if_input_is_not_provided(): void
