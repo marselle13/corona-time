@@ -59,8 +59,6 @@ class AuthTest extends TestCase
 		]);
 
 		$response->assertRedirect(route('successes.registration'));
-		$response = $this->post(route('auth.logout'));
-		$response->assertRedirect(route('auth.login_page'));
 	}
 
 	public function test_auth_should_redirect_to_worldwide_page_after_successfully_login_if_user_is_verified(): void
@@ -72,5 +70,7 @@ class AuthTest extends TestCase
 		]);
 
 		$response->assertRedirect(route('landings.worldwide'));
+		$response = $this->post(route('auth.logout'));
+		$response->assertRedirect(route('auth.login_page'));
 	}
 }
