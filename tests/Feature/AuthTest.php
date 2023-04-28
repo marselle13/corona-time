@@ -12,11 +12,11 @@ class AuthTest extends TestCase
 
 	public function test_login_page_is_accessible(): void
 	{
-			$response = $this->get(route('auth.login_page'));
-			$response->assertSuccessful();
-			$response->assertSee(trans('messages.welcome_login'));
-			$response->assertViewIs('auth.login-page');
-=	}
+		$response = $this->get(route('auth.login_page'));
+		$response->assertSuccessful();
+		$response->assertSee(trans('messages.welcome_login'));
+		$response->assertViewIs('auth.login-page');
+	}
 
 	public function test_login_should_give_us_errors_if_input_is_not_provided(): void
 	{
