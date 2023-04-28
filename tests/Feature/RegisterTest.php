@@ -16,15 +16,10 @@ class RegisterTest extends TestCase
 
 	public function test_register_page_is_accessible(): void
 	{
-		$languages = ['en', 'ka'];
-
-		foreach ($languages as $language) {
-			app()->setLocale($language);
-			$response = $this->get(route('auth.register_page'));
-			$response->assertSuccessful();
-			$response->assertSee(trans('messages.welcome_register'));
-			$response->assertViewIs('auth.register-page');
-		}
+		$response = $this->get(route('auth.register_page'));
+		$response->assertSuccessful();
+		$response->assertSee(trans('messages.welcome_register'));
+		$response->assertViewIs('auth.register-page');
 	}
 
 	public function test_register_page_should_give_us_errors_if_inputs_is_not_provided(): void

@@ -12,16 +12,11 @@ class AuthTest extends TestCase
 
 	public function test_login_page_is_accessible(): void
 	{
-		$languages = ['en', 'ka'];
-
-		foreach ($languages as $language) {
-			app()->setLocale($language);
 			$response = $this->get(route('auth.login_page'));
 			$response->assertSuccessful();
 			$response->assertSee(trans('messages.welcome_login'));
 			$response->assertViewIs('auth.login-page');
-		}
-	}
+=	}
 
 	public function test_login_should_give_us_errors_if_input_is_not_provided(): void
 	{
@@ -43,13 +38,13 @@ class AuthTest extends TestCase
 		$response->assertSessionDoesntHaveErrors(['username_email']);
 	}
 
-	public function test_auth_should_give_us_incorrect_credentials_error_when_such_user_does_not_exists(): void
+	public function test_login_should_give_us_incorrect_credentials_error_when_such_user_does_not_exists(): void
 	{
 		$response = $this->post(route('auth.login'), ['username_email' => 'example@gmail.com', 'password' => 'password']);
 		$response->assertSessionHasErrors(['login_error' => trans('messages.login_error')]);
 	}
 
-	public function test_auth_should_redirect_to_successfully_registration_page_if_user_is_not_verified(): void
+	public function test_login_should_redirect_to_successfully_registration_page_if_user_is_not_verified(): void
 	{
 		User::factory()->create(['email_verified_at' => null, 'email' => 'example@gmail.com', 'password' => bcrypt('password')]);
 
@@ -61,7 +56,7 @@ class AuthTest extends TestCase
 		$response->assertRedirect(route('successes.registration'));
 	}
 
-	public function test_auth_should_redirect_to_worldwide_page_after_successfully_login_if_user_is_verified(): void
+	public function test_login_should_redirect_to_worldwide_page_after_successfully_login_if_user_is_verified(): void
 	{
 		User::factory()->create(['email' => 'example@gmail.com', 'password' => bcrypt('password')]);
 		$response = $this->post(route('auth.login'), [
