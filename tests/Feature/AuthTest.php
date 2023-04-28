@@ -23,20 +23,20 @@ class AuthTest extends TestCase
 		}
 	}
 
-	public function test_auth_should_give_us_errors_if_input_is_not_provided(): void
+	public function test_login_should_give_us_errors_if_input_is_not_provided(): void
 	{
 		$response = $this->post(route('auth.login'));
 		$response->assertSessionHasErrors(['username_email', 'password']);
 	}
 
-	public function test_auth_should_give_us_errors_if_we_wont_provide_username_email_input(): void
+	public function test_login_should_give_us_errors_if_we_wont_provide_username_email_input(): void
 	{
 		$response = $this->post(route('auth.login'), ['password' => 'password']);
 		$response->assertSessionHasErrors(['username_email']);
 		$response->assertSessionDoesntHaveErrors(['password']);
 	}
 
-	public function test_auth_should_give_us_errors_if_we_wont_provide_password_input(): void
+	public function test_login_should_give_us_errors_if_we_wont_provide_password_input(): void
 	{
 		$response = $this->post(route('auth.login'), ['username_email' => 'example']);
 		$response->assertSessionHasErrors(['password']);
@@ -51,46 +51,26 @@ class AuthTest extends TestCase
 
 	public function test_auth_should_redirect_to_successfully_registration_page_if_user_is_not_verified(): void
 	{
-		$name = 'example';
-		$email = 'example@gmail.com';
-		$password = 'password';
+		User::factory()->create(['email_verified_at' => null, 'email' => 'example@gmail.com', 'password' => bcrypt('password')]);
 
-		User::create(
-			[
-				'username'          => $name,
-				'email'             => $email,
-				'password'          => bcrypt($password),
-			]
-		);
 		$response = $this->post(route('auth.login'), [
-			'username_email'    => $email,
-			'password'          => $password,
+			'username_email'    => 'example@gmail.com',
+			'password'          => 'password',
 		]);
 
 		$response->assertRedirect(route('successes.registration'));
+		$response = $this->post(route('auth.logout'));
+		$response->assertRedirect(route('auth.login_page'));
 	}
 
 	public function test_auth_should_redirect_to_worldwide_page_after_successfully_login_if_user_is_verified(): void
 	{
-		$name = 'example';
-		$email = 'example@gmail.com';
-		$password = 'password';
-
-		User::create(
-			[
-				'username'          => $name,
-				'email'             => $email,
-				'password'          => bcrypt($password),
-				'email_verified_at' => now(),
-			]
-		);
+		User::factory()->create(['email' => 'example@gmail.com', 'password' => bcrypt('password')]);
 		$response = $this->post(route('auth.login'), [
-			'username_email'    => $email,
-			'password'          => $password,
+			'username_email'    => 'example@gmail.com',
+			'password'          => 'password',
 		]);
 
 		$response->assertRedirect(route('landings.worldwide'));
-		$response = $this->post(route('auth.logout'));
-		$response->assertRedirect(route('auth.login'));
 	}
 }
