@@ -9,7 +9,7 @@ class LangTest extends TestCase
 	/**
 	 * A basic feature test example.
 	 */
-	public function test_switch_language()
+	public function test_switch_language(): void
 	{
 		$response = $this->post('/language', ['locale' => 'ka']);
 		$response->assertRedirect();

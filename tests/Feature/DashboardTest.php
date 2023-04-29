@@ -25,13 +25,13 @@ class DashboardTest extends TestCase
 		$response->assertRedirect(route('auth.login_page'));
 	}
 
-	public function test_redirect_to_worldwide_page_if_authorized_user_visits_login_page()
+	public function test_redirect_to_worldwide_page_if_authorized_user_visits_login_page(): void
 	{
 		$response = $this->actingAs($this->user)->get(route('auth.login_page'));
 		$response->assertRedirect('/');
 	}
 
-	public function test_worldwide_page_is_accessible()
+	public function test_worldwide_page_is_accessible(): void
 	{
 		$response = $this->actingAs($this->user)->get(route('landings.worldwide'));
 		$response->assertSuccessful();
@@ -39,7 +39,7 @@ class DashboardTest extends TestCase
 		$response->assertViewIs('landing.worldwide');
 	}
 
-	public function test_country_page_is_accessible()
+	public function test_country_page_is_accessible(): void
 	{
 		$response = $this->actingAs($this->user)->get(route('landings.country'));
 		$response->assertSuccessful();

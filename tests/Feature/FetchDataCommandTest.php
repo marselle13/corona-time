@@ -9,7 +9,7 @@ class FetchDataCommandTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function test_data_fetching_in_database()
+	public function test_data_fetching_in_database(): void
 	{
 		$this->artisan('fetch:covid-data');
 		$this->assertDatabaseHas('statistics', [
