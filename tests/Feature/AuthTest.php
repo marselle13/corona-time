@@ -46,11 +46,12 @@ class AuthTest extends TestCase
 
 	public function test_login_should_redirect_to_successfully_registration_page_if_user_is_not_verified(): void
 	{
-		User::factory()->create(['email_verified_at' => null, 'email' => 'example@gmail.com', 'password' => bcrypt('password')]);
+		User::factory()->create();
 
+		$user = User::factory()->create(['email_verified_at' => null]);
 		$response = $this->post(route('auth.login'), [
-			'username_email'    => 'example@gmail.com',
-			'password'          => 'password',
+			'username_email'    => $user->email,
+			'password'          => '1234',
 		]);
 
 		$response->assertRedirect(route('successes.registration'));
@@ -58,10 +59,10 @@ class AuthTest extends TestCase
 
 	public function test_login_should_redirect_to_worldwide_page_after_successfully_login_if_user_is_verified(): void
 	{
-		User::factory()->create(['email' => 'example@gmail.com', 'password' => bcrypt('password')]);
+		$user = User::factory()->create();
 		$response = $this->post(route('auth.login'), [
-			'username_email'    => 'example@gmail.com',
-			'password'          => 'password',
+			'username_email'    => $user->email,
+			'password'          => '1234',
 		]);
 
 		$response->assertRedirect(route('landings.worldwide'));

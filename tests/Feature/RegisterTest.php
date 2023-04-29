@@ -30,13 +30,13 @@ class RegisterTest extends TestCase
 
 	public function test_register_page_should_give_us_errors_if_username_and_email_exists(): void
 	{
-		User::factory()->create(['username' => 'example', 'email' => 'example@gmail.com', 'password' => bcrypt('password')]);
+		$user = User::factory()->create();
 
 		$response = $this->post(route('auth.register'), [
-			'username'              => 'example',
-			'email'                 => 'example@gmail.com',
-			'password'              => 'password',
-			'password_confirmation' => 'password',
+			'username'              => $user->username,
+			'email'                 => $user->email,
+			'password'              => '1234',
+			'password_confirmation' => '1234',
 		]);
 		$response->assertSessionHasErrors(['username', 'email']);
 	}
