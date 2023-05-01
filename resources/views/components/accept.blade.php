@@ -25,7 +25,7 @@
 <body>
 <div class="wrapper" style="max-width: 520px;  margin: 12rem auto; background: white;">
     <img src="{{asset('./images/worldwide.png')}}" alt="worldwide" style="width: 100%"/>
-    <div class="info" style="margin: 0 64px;">>
+    <div class="info" style="margin: 0 64px;">
         <div class="text-div" style="text-align: center; margin-top: 3.5rem">
             <h1 style="margin: 0 auto; font-weight: 900; font-size: 24px;">{{$slot}}</h1>
             <p style="margin: 0 auto; font-size: 20px; color: #808189;">{{$info}}</p>
