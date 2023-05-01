@@ -15,6 +15,7 @@ class StatisticController extends Controller
 	public function countryPage(): View
 	{
 		$worldwide = Statistic::where('name->en', 'worldwide')->first();
-		return view('landing.country', ['countries' => Statistic::countriesFilter()->get()->prepend($worldwide)]);
+		$countries = $worldwide ? Statistic::countriesFilter()->get()->prepend($worldwide) : Statistic::countriesFilter()->get();
+		return view('landing.country', ['countries' => $countries]);
 	}
 }

@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Models\Statistic;
-use GuzzleHttp\Client;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Http;
 
 class FetchCovidData extends Command
 {
@@ -27,23 +27,17 @@ class FetchCovidData extends Command
 	 */
 	public function handle(): void
 	{
-		$client = new Client([
-			'base_uri' => 'https://devtest.ge/',
-		]);
+		$response = Http::get('https://devtest.ge/countries');
+		$countries = $response->json();
 
-		$responseGet = $client->request('GET', '/countries');
-		$countries = json_decode($responseGet->getBody(), true);
-
-		$data = collect($countries)->map(function ($country) use ($client) {
-			$responsePost = $client->request('POST', '/get-country-statistics', [
-				'json' => [
-					'code' => $country['code'],
-				],
+		$data = collect($countries)->map(function ($country) {
+			$response = Http::post('https://devtest.ge/get-country-statistics', [
+				'code' => $country['code'],
 			]);
-
-			$statistics = json_decode($responsePost->getBody(), true);
+			$statistics = $response->json();
 			return array_merge($country, $statistics);
 		});
+
 		collect($data)->each(
 			function ($item) {
 				Statistic::updateOrCreate(
