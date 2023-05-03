@@ -6,7 +6,7 @@ return [
 	'have_account'            => 'Already have an account? ',
 	'welcome_login'           => 'Welcome back',
 	'info_login'              => 'Welcome back! Please enter your details',
-	'forget_password'         => 'Forget Password?',
+	'forget_password'         => 'Forgot Password?',
 	'no_account'              => 'Don\'t have and an account? ',
 	'sign_free'               => 'Sign up for free',
 	'username'                => 'Username',
