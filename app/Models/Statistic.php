@@ -12,7 +12,7 @@ class Statistic extends Model
 
 	public $translatable = ['name'];
 
-	protected $guarded = [];
+	protected $fillable = ['code', 'name', 'country', 'confirmed', 'recovered', 'critical', 'deaths'];
 
 	public function scopeCountriesFilter($query): void
 	{

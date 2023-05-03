@@ -1,4 +1,4 @@
-<section class="md:w-[85%] mx-auto md:mt-10 mt-6 md:space-y-10 w-[96%] space-y-6">
+<section class="md:w-[85%] mx-auto md:mt-10 mt-6 md:space-y-10 w-[96%] space-y-6 border-b border-[#F6F6F7]">
     <h1 class="text-[xl] md:text-[25px] md:leading-[30px] font-extrabold">{{$head}}</h1>
     <nav>
         <ul class="flex gap-4 md:gap-[72px]">

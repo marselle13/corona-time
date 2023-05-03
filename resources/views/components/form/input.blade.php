@@ -6,7 +6,7 @@
     <div class="relative space-y-2">
         <input name="{{$name}}" id="{{$name}}"
                class="px-5 py-4 placeholder-[#808189] text-[#010414] outline-[#2029F3] border rounded-lg w-full
-           @if($errors->has($name)) border-[#CC1E1E]
+           @if($errors->has($name) || $errors->has('login_error')) border-[#CC1E1E]
            @elseif(old($name) !== null) border-[#249E2C]
            @else border-[#E6E6E7]
            @endif"

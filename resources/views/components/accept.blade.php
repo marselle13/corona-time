@@ -6,17 +6,24 @@
     <style>
         @media (max-width: 520px) {
             .wrapper {
-                margin: 0;
+                margin: 0 !important;
             }
             .text-div h1 {
-                margin: 0
+                margin: 0 !important;
 
             }
+            .text-div p {
+                margin: 0.5rem auto !important;
+
+            }
+            .button{
+                margin-top: 1.5rem;
+            }
             .button-text{
-                width: auto;
+                width: auto !important;
             }
             .info {
-                margin: 0
+                margin: 0 !important;
             }
         }
     </style>
@@ -28,9 +35,9 @@
     <div class="info" style="margin: 0 64px;">
         <div class="text-div" style="text-align: center; margin-top: 3.5rem">
             <h1 style="margin: 0 auto; font-weight: 900; font-size: 24px;">{{$slot}}</h1>
-            <p style="margin: 0 auto; font-size: 20px; color: #808189;">{{$info}}</p>
+            <p style="margin: 1rem auto 0; font-size: 20px; color: #808189;">{{$info}}</p>
         </div>
-        <div style="text-align: center; margin-top: 2.5rem; background-color: #0FBA68; border-radius: 12px;">
+        <div class="button" style="text-align: center; margin-top: 2.5rem; background-color: #0FBA68; border-radius: 12px;">
             <a class="button-text" style="text-align: center; text-decoration: none; font-weight: 900; color: white; text-transform: uppercase; display: inline-block; width: 100%; padding: 20px 0;" href="{{$link}}"><span>{{$button}}</span></a>
         </div>
     </div>
